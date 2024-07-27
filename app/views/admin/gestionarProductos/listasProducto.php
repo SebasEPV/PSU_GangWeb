@@ -1,3 +1,27 @@
+<?php
+  require("./../../../../config/database.php");
+
+  $con = new Database;
+  $enlace = $con->getConnection();
+
+  if (!$enlace) {
+    throw new Exception("Error al establecer la conexión a la base de datos.");
+  }
+
+  $consulta = $enlace->query("SELECT * FROM consultProducts");
+
+  if (!$consulta) {
+    die("Query failed: " . $enlace->errorInfo()[2]);
+  }
+
+  $results = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+  // Cierra sesión y la conexión si es necesario
+  // session_destroy();
+  // $enlace = null;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,125 +104,55 @@
         </div>
       </section>
 
-      <div class="wrapper">
-        <div class="content-wrapper">
-          <section class="content-header">
-            <div class="container-fluid">
-              <div class="row mb-2">
-                <div class="col-sm-6">
-                  <a type="submit" href="agregarProducto.php" class="btn btn-success">Agregar producto</a>
-                </div>
-              </div>
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <a type="submit" href="agregarProducto.php" class="btn btn-success">Agregar producto</a>
             </div>
-          </section>
-
-          <section class="content">
-            <div class="card">
-              <div class="card-header">
-              </div>
-              <div class="card-body p-0">
-                <table class="table table-striped projects">
-                  <thead>
-                    <tr>
-                      <th style="width: 1%">#</th>
-                      <th style="width: 24%">Producto</th>
-                      <th style="width: 20%">Marca</th>
-                      <th style="width: 20%">Categoria</th>
-                      <th style="width: 10%">Precio</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-row" data-toggle="collapse" data-target=".expand-content-1" aria-expanded="false" aria-controls="expand-content-1">
-                      <td>1</td>
-                      <td>A550BN</td>
-                      <td>MSI</td>
-                      <td>Fuente de poder</td>
-                      <td>$1,200</td>
-                      <td>
-                        <a href="editarProducto.php" class="btn">Editar</a>
-                        <a href="" class="btn">Eliminar reseña</a>
-                      </td>
-                    </tr>
-                    <tr class="collapse expand-content-1">
-                      <td colspan="6">
-                        <div class="card card-body">
-                          <p>Más detalles de la reseña aquí...</p>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-row" data-toggle="collapse" data-target=".expand-content-1" aria-expanded="false" aria-controls="expand-content-1">
-                      <td>2</td>
-                      <td>S70 Blade 4TB</td>
-                      <td>XPG</td>
-                      <td>SSD</td>
-                      <td>$5,800</td>
-                      <td>
-                      <a href="editarProducto.php" class="btn">Editar</a>
-                      <a href="" class="btn">Eliminar reseña</a>
-                      </td>
-                    </tr>
-                    <tr class="collapse expand-content-1">
-                      <td colspan="6">
-                        <div class="card card-body">
-                          <p>Más detalles de la reseña aquí...</p>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-row" data-toggle="collapse" data-target=".expand-content-1" aria-expanded="false" aria-controls="expand-content-1">
-                      <td>3</td>
-                      <td>Fury Renegade</td>
-                      <td>Kingston</td>
-                      <td>SSD</td>
-                      <td>$2,800</td>
-                      <td>
-                      <a href="editarProducto.php" class="btn">Editar</a>
-                      <a href="" class="btn">Eliminar reseña</a>
-                      </td>
-                    </tr>
-                    <tr class="collapse expand-content-1">
-                      <td colspan="6">
-                        <div class="card card-body">
-                          <p>Más detalles de la reseña aquí...</p>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-row" data-toggle="collapse" data-target=".expand-content-1" aria-expanded="false" aria-controls="expand-content-1">
-                      <td>4</td>
-                      <td>RM X Shift</td>
-                      <td>Corsair</td>
-                      <td>Fuente de Poder</td>
-                      <td>$2,500</td>
-                      <td>
-                      <a href="editarProducto.php" class="btn">Editar</a>
-                      <a href="" class="btn">Eliminar reseña</a>
-                      </td>
-                    </tr>
-                    <tr class="collapse expand-content-1">
-                      <td colspan="6">
-                        <div class="card card-body">
-                          <p>Más detalles de la reseña aquí...</p>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-
-          <script>
-            $(document).ready(function() {
-              $('.table-row').click(function() {
-                var target = $(this).data('target');
-                $(target).collapse('toggle');
-              });
-            });
-          </script>
-
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section class="content">
+        <div class="card">
+          <div class="card-header">
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-striped projects">
+              <thead>
+                <tr>
+                  <th style="width: 1%">#</th>
+                  <th style="width: 13%">Producto</th>
+                  <th style="width: 13%">Marca</th>
+                  <th style="width: 13%">Categoria</th>
+                  <th style="width: 10%">Precio</th>
+                  <th style="width: 30%">Descripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($results as $row) : ?>
+                  <tr class="table-row" data-toggle="collapse" data-target=".expand-content-1" aria-expanded="false" aria-controls="expand-content-1">
+                    <td><?php echo htmlspecialchars($row['product_id']); ?></td>
+                    <td><?php echo htmlspecialchars($row['product_name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['brand_name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['category_name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['product_price']); ?></td>
+                    <td><?php echo htmlspecialchars($row['product_description']); ?></td>
+                    <td>
+                      <a href="./editarProducto.php?id=<?php echo $row['product_id']; ?>" class="btn">Editar</a>
+                      <a href="" class="btn">Eliminar reseña</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </body>
 
 </html>
