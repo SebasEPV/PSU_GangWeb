@@ -142,7 +142,6 @@
                     <td><?php echo htmlspecialchars($row['product_description']); ?></td>
                     <td>
                       <a href="./editarProducto.php?id=<?php echo $row['product_id']; ?>" class="btn">Editar</a>
-                      <a href="" class="btn">Eliminar reseña</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

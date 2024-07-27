@@ -142,7 +142,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo htmlspecialchars($row['date_review']); ?></td>
                     <td>
                       <a href="editarReseña.php?id=<?php echo $row['review_id']; ?>" class="btn">Editar</a>
-                      <a href="eliminarReseña.php?id=<?php echo $row['review_id']; ?>" class="btn">Eliminar reseña</a>
+                      <a href="./../../../controllers/eliminarReseñas.php?id=<?php echo $row['review_id']; ?>" class="btn">Eliminar reseña</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
