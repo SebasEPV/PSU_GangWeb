@@ -17,14 +17,13 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="./../../../public/assets/css/style.css">
-  <link href="./../../public/assets/img/LOGOS/capacitorLogo.png" class="icon">
+  <link href="./../../public/assets/img/logos/capacitorLogo.png" rel="icon">
   
   <title>PSU Gang Menu</title>
 
 </head>
 
 <body>
-
 
   <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
