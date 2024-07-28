@@ -8,15 +8,63 @@ if (!$enlace) {
   throw new Exception("Error al establecer la conexión a la base de datos.");
 }
 
-$consulta = $enlace->query("SELECT * FROM consultReviews");
+// Consultas para obtener datos de filtros
+$brands = $enlace->query("SELECT * FROM brands")->fetchAll(PDO::FETCH_ASSOC);
+$categories = $enlace->query("SELECT * FROM categories")->fetchAll(PDO::FETCH_ASSOC);
+$tiers = $enlace->query("SELECT * FROM tiers")->fetchAll(PDO::FETCH_ASSOC);
+
+$searchTerm = '';
+$selectedBrand = '';
+$selectedCategory = '';
+$selectedTier = '';
+
+// Base de la consulta
+$query = "
+    SELECT reviews.*, products.product_name, users.username, brands.brand_name, categories.category_name, tiers.tier_name 
+    FROM reviews
+    JOIN products ON reviews.fk_product_id = products.product_id
+    JOIN users ON reviews.fk_author_id = users.user_id
+    JOIN brands ON products.fk_brand_id = brands.brand_id
+    JOIN product_categories ON products.product_id = product_categories.fk_product_id
+    JOIN categories ON product_categories.fk_category_id = categories.category_id
+    JOIN tiers ON products.fk_tier_id = tiers.tier_id
+    WHERE 1=1";
+$params = [];
+
+// Manejo del filtro de búsqueda
+if (isset($_GET['searchbar']) && !empty($_GET['searchbar'])) {
+  $searchTerm = $_GET['searchbar'];
+  $query .= " AND products.product_name LIKE :searchTerm";
+  $params['searchTerm'] = '%' . $searchTerm . '%';
+}
+
+// Manejo de otros filtros
+if (isset($_GET['brand']) && !empty($_GET['brand'])) {
+  $selectedBrand = $_GET['brand'];
+  $query .= " AND brands.brand_name = :brand";
+  $params['brand'] = $selectedBrand;
+}
+
+if (isset($_GET['category']) && !empty($_GET['category'])) {
+  $selectedCategory = $_GET['category'];
+  $query .= " AND categories.category_name = :category";
+  $params['category'] = $selectedCategory;
+}
+
+if (isset($_GET['tier']) && !empty($_GET['tier'])) {
+  $selectedTier = $_GET['tier'];
+  $query .= " AND tiers.tier_name = :tier";
+  $params['tier'] = $selectedTier;
+}
+
+$consulta = $enlace->prepare($query);
+$consulta->execute($params);
 
 if (!$consulta) {
   die("Query failed: " . $enlace->errorInfo()[2]);
 }
 
 $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +74,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reseña</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <style>
     .expand-content {
       display: none;
@@ -78,6 +124,16 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
       color: #383838;
     }
   </style>
+  <script>
+    function toggleContent(id) {
+      var content = document.getElementById('content-' + id);
+      if (content.style.display === 'none') {
+        content.style.display = 'table-row';
+      } else {
+        content.style.display = 'none';
+      }
+    }
+  </script>
 </head>
 
 <body class="hold-transition">
@@ -104,11 +160,42 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
           <div class="row align-items-center">
             <div class="d-flex w-100 align-items-center ml-2">
               <a type="button" href="agregarReseña.php" class="btn">Agregar reseña</a>
-              <input type="text" name="searchbar" id="searchbar" class="flex-grow-1 ml-2">
-              <a href="#">
-                <img src="./../../../../public/assets/img/lupa.png" alt="Lupa" class="img">
-                <img src="./../../../../public/assets/img/filtro.png" alt="Filtro" class="img">
-              </a>
+              <form method="GET" class="flex-grow-1 d-flex">
+                <input type="text" name="searchbar" id="searchbar" class="form-control ml-2" value="<?php echo htmlspecialchars($searchTerm); ?>">
+                <button type="submit" class="btn">Buscar</button>
+              </form>
+            </div>
+            <div class="d-flex w-100 align-items-center ml-2">
+              <form method="GET" class="flex-grow-1 d-flex">
+                <select name="brand" class="form-select">
+                  <option value="">Seleccione Marca</option>
+                  <?php foreach ($brands as $brand): ?>
+                    <option value="<?php echo htmlspecialchars($brand['brand_name']); ?>" <?php if ($selectedBrand == $brand['brand_name']) echo 'selected'; ?>>
+                      <?php echo htmlspecialchars($brand['brand_name']); ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
+
+                <select name="category" class="form-select ml-2">
+                  <option value="">Seleccione Categoría</option>
+                  <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo htmlspecialchars($category['category_name']); ?>" <?php if ($selectedCategory == $category['category_name']) echo 'selected'; ?>>
+                      <?php echo htmlspecialchars($category['category_name']); ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
+
+                <select name="tier" class="form-select ml-2">
+                  <option value="">Seleccione Tier</option>
+                  <?php foreach ($tiers as $tier): ?>
+                    <option value="<?php echo htmlspecialchars($tier['tier_name']); ?>" <?php if ($selectedTier == $tier['tier_name']) echo 'selected'; ?>>
+                      <?php echo htmlspecialchars($tier['tier_name']); ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
+
+                <button type="submit" class="btn ml-2">Filtrar</button>
+              </form>
             </div>
           </div>
         </div>
@@ -133,7 +220,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
               </thead>
               <tbody>
                 <?php foreach ($reviews as $row) : ?>
-                  <tr>
+                  <tr onclick="toggleContent(<?php echo $row['review_id']; ?>)">
                     <td><?php echo htmlspecialchars($row['review_id']); ?></td>
                     <td><?php echo htmlspecialchars($row['title']); ?></td>
                     <td><?php echo htmlspecialchars($row['product_name']); ?></td>
@@ -143,6 +230,11 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                       <a href="editarReseña.php?id=<?php echo $row['review_id']; ?>" class="btn">Editar</a>
                       <a href="./../../../controllers/eliminarReseñas.php?id=<?php echo $row['review_id']; ?>" class="btn">Eliminar reseña</a>
+                    </td>
+                  </tr>
+                  <tr id="content-<?php echo $row['review_id']; ?>" class="expand-content">
+                    <td colspan="7">
+                      <div><?php echo htmlspecialchars($row['content']); ?></div>
                     </td>
                   </tr>
                 <?php endforeach; ?>
