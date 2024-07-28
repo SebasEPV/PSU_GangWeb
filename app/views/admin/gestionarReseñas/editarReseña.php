@@ -64,19 +64,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       justify-content: center;
       height: 100vh;
       background-color: #383838;
+      margin: 20px;
+      /* Margen para la página */
+    }
+
+    .wrapper {
+      width: 100%; /* Ajusta el ancho al 100% del contenedor */
+      max-width: 1200px; /* Ancho máximo para mantener la proporción */
+      padding: 20px; /* Añade padding interno */
     }
 
     .card {
       background-color: #DDDCDB;
+      padding: 20px;
     }
 
     .btn {
       background-color: #00E9D2;
       color: #383838;
+      margin-right: 8px;
+      /* Espacio entre botones */
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #ffffff;
+      margin-right: 8px;
+      /* Espacio entre botones */
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: #ffffff;
     }
 
     h1 {
       color: #00E9D2;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      /* Espacio entre filtros */
+    }
+
+    .form-control {
+      margin-bottom: 8px;
+      /* Espacio entre campos de formulario */
     }
   </style>
 </head>
@@ -89,12 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="row">
             <div class="">
               <h1>Editar Reseña</h1>
-            </div>
-            <div class="col-sm-6">
-              <nav>
-                <a href="">Inicio</a>
-                <a href="">FAQ</a>
-              </nav>
             </div>
           </div>
         </div>
