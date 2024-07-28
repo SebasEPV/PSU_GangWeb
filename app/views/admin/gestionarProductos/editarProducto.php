@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
                   <div class="form-group">
                     <label for="inputPrice">Precio</label>
-                    <input type="number" name="product_price" id="inputPrice" class="form-control" value="<?php echo htmlspecialchars($results['product_price'] ?? ''); ?>">
+                    <input type="number" name="product_price" id="inputPrice" class="form-control" step="0.01" value="<?php echo htmlspecialchars($results['product_price'] ?? ''); ?>">
                   </div>
                   <div class="form-group">
                     <label for="inputBrand">Marca</label>

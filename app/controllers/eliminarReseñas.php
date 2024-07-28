@@ -1,6 +1,4 @@
 <?php
-mysqli_report(MYSQLI_REPORT_OFF);
-
 session_start();
 require("./../../config/database.php");
 
@@ -11,10 +9,16 @@ if (!$enlace) {
     throw new Exception("Error al establecer la conexión a la base de datos.");
 }
 
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']); // Asegúrate de que el ID es un número entero
+    $consulta = "DELETE FROM reviews WHERE review_id = :id";
+    $stmt = $enlace->prepare($consulta);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-if (isset($_GET['id'])){
-    $id = $_GET['id'];
-    $consulta = "DELETE FROM reviews WHERE review_id = " . $id;
-    $result = $enlace->query($consulta);
+    if (!$stmt->execute()) {
+        die("Error al eliminar la reseña: " . print_r($stmt->errorInfo(), true));
+    }
 }
+
 header('Location:./../views/admin/gestionarReseñas/listasReseñas.php');
+exit();

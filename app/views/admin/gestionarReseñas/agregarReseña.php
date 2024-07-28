@@ -1,3 +1,21 @@
+<?php
+require("./../../../../config/database.php");
+
+$con = new Database;
+$enlace = $con->getConnection();
+
+if (!$enlace) {
+    die("Error al establecer la conexión a la base de datos.");
+}
+
+// Obtener tiers
+$consulta_tiers = $enlace->query("SELECT tier_id, tier_name FROM tiers");
+$tiers = $consulta_tiers->fetchAll(PDO::FETCH_ASSOC);
+
+// Obtener productos
+$consulta_productos = $enlace->query("SELECT product_id, product_name FROM products");
+$productos = $consulta_productos->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +24,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agregar Reseña</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
     body {
@@ -22,14 +40,16 @@
       justify-content: center;
     }
 
-    .card{
+    .card {
       background-color: #DDDCDB;
     }
+
     .btn {
       background-color: #00E9D2;
       color: #383838;
     }
-    h1{
+
+    h1 {
       color: #00E9D2;
     }
   </style>
@@ -63,46 +83,44 @@
                 <h3 class="card-title">Reseña Nueva</h3>
               </div>
               <div class="card-body">
-                <div class="form-group">
-                  <label for="inputName">Nombre reseña</label>
-                  <input type="text" id="inputName" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="inputDescription">Contenido</label>
-                  <textarea id="inputDescription" class="form-control" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="inputTier">Tier</label>
-                  <select id="inputTier" class="form-control custom-select">
-                    <option selected disabled>Select one</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
-                    <option>E</option>
-                    <option>F</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="inputClientCompany">Producto</label>
-                  <input type="text" id="inputClientCompany" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="inputProjectLeader">Imagen</label>
-                  <input type="text" id="inputProjectLeader" class="form-control">
-                </div>
+                <form action="./../../../controllers/agregarReseña.php" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="inputName">Nombre reseña</label>
+                    <input type="text" id="inputName" name="review_name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDescription">Contenido</label>
+                    <textarea id="inputDescription" name="review_content" class="form-control" rows="4"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTier">Tier</label>
+                    <select id="inputTier" name="tier" class="form-control custom-select" required>
+                      <option selected disabled>Seleccionar un tier</option>
+                      <?php foreach ($tiers as $tier) : ?>
+                        <option value="<?php echo $tier['tier_id']; ?>"><?php echo $tier['tier_name']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputProduct">Producto</label>
+                    <select id="inputProduct" name="product" class="form-control custom-select" required>
+                      <option selected disabled>Seleccionar un producto</option>
+                      <?php foreach ($productos as $producto) : ?>
+                        <option value="<?php echo $producto['product_id']; ?>"><?php echo $producto['product_name']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                  <div class="row justify-content-center mt-3">
+                    <div class="col-12 text-center">
+                      <a href="listasReseñas.php" class="btn btn-secondary">Cancelar</a>
+                      <input type="submit" value="Enviar" class="btn btn-success">
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="row justify-content-center mt-3" id="buttons">
-          <div class="col-12 text-center">
-            <a href="listasReseñas.php" class="btn btn-secondary">Cancelar</a>
-            <input type="submit" value="Enviar" class="btn btn-success">
-          </div>
-        </div>
-
       </section>
     </div>
   </div>
