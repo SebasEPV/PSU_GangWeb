@@ -9,13 +9,21 @@ if (!$enlace) {
 }
 
 $results = [];
+$tiers = [];
 
+// Obtener datos de la reseña si hay un id proporcionado
 if (isset($_GET['id'])) {
-  $consulta = "SELECT * FROM reviews WHERE review_id = '$_GET[id]'";
+  $consulta = "SELECT * FROM reviews WHERE review_id = :id";
   $result = $enlace->prepare($consulta);
-  $result->execute();
+  $result->execute([':id' => $_GET['id']]);
   $results = $result->fetch(PDO::FETCH_ASSOC);
 }
+
+// Obtener todos los tiers para el menú desplegable
+$consultaTiers = "SELECT * FROM tiers";
+$resultTiers = $enlace->prepare($consultaTiers);
+$resultTiers->execute();
+$tiers = $resultTiers->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['title'], $_POST['content'], $_POST['fk_tier_id'])) {
@@ -23,10 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = $_POST['content'];
     $fk_tier_id = $_POST['fk_tier_id'];
 
-    $dataUpdate = "UPDATE reviews SET title = '$title', content = '$content', fk_tier_id = '$fk_tier_id', date_review = NOW() WHERE review_id = '$_GET[id]'";
+    $dataUpdate = "UPDATE reviews SET title = :title, content = :content, fk_tier_id = :fk_tier_id, date_review = NOW() WHERE review_id = :id";
     $updateResult = $enlace->prepare($dataUpdate);
+    $updateParams = [
+      ':title' => $title,
+      ':content' => $content,
+      ':fk_tier_id' => $fk_tier_id,
+      ':id' => $_GET['id']
+    ];
 
-    if ($updateResult->execute()) {
+    if ($updateResult->execute($updateParams)) {
       header('Location: ./listasReseñas.php');
     } else {
       echo "Error al actualizar los datos: " . $enlace->errorInfo()[2];
@@ -51,13 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       height: 100vh;
       background-color: #383838;
     }
+
     .card {
       background-color: #DDDCDB;
     }
+
     .btn {
       background-color: #00E9D2;
       color: #383838;
     }
+
     h1 {
       color: #00E9D2;
     }
@@ -91,15 +108,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form method="POST">
                   <div class="form-group">
                     <label for="inputTitle">Título</label>
-                    <input type="text" id="inputTitle" name="title" class="form-control" value="<?php echo htmlspecialchars($results['title']); ?>">
+                    <input type="text" id="inputTitle" name="title" class="form-control" value="<?php echo htmlspecialchars($results['title'] ?? ''); ?>">
                   </div>
                   <div class="form-group">
                     <label for="inputContent">Contenido</label>
-                    <textarea id="inputContent" name="content" class="form-control" rows="4"><?php echo htmlspecialchars($results['content']); ?></textarea>
+                    <textarea id="inputContent" name="content" class="form-control" rows="4"><?php echo htmlspecialchars($results['content'] ?? ''); ?></textarea>
                   </div>
                   <div class="form-group">
                     <label for="inputTier">Tier</label>
-                    <input type="text" id="inputTier" name="fk_tier_id" class="form-control" value="<?php echo htmlspecialchars($results['fk_tier_id']); ?>">
+                    <select id="inputTier" name="fk_tier_id" class="form-control">
+                      <?php foreach ($tiers as $tier) : ?>
+                        <option value="<?php echo $tier['tier_id']; ?>" <?php if ($tier['tier_id'] == ($results['fk_tier_id'] ?? '')) echo 'selected'; ?>>
+                          <?php echo htmlspecialchars($tier['tier_name']); ?>
+                        </option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                   <div class="row justify-content-center mt-3">
                     <div class="col-12 text-center">
