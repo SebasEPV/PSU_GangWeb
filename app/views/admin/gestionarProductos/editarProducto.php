@@ -88,17 +88,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       background-color: #383838;
     }
 
+    .wrapper {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
     .card {
       background-color: #DDDCDB;
+      padding: 20px;
     }
 
     .btn {
       background-color: #00E9D2;
       color: #383838;
+      margin-right: 8px;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #ffffff;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: #ffffff;
     }
 
     h1 {
       color: #00E9D2;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-control {
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -111,12 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="row">
             <div class="">
               <h1>Editar producto</h1>
-            </div>
-            <div class="col-sm-6">
-              <nav>
-                <a href="">Inicio</a>
-                <a href="">FAQ</a>
-              </nav>
             </div>
           </div>
         </div>

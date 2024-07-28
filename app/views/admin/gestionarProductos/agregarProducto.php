@@ -35,18 +35,33 @@ $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
       justify-content: center;
       height: 100vh;
       background-color: #383838;
-      color: #383838;
+      margin: 20px; /* Margen para la página */
+    }
+
+    .wrapper {
+      width: 100%; /* Ajusta el ancho al 100% del contenedor */
+      max-width: 900px; /* Ancho máximo para mantener la proporción */
+      padding: 20px; /* Añade padding interno */
     }
 
     .card {
       background-color: #DDDCDB;
-      width: 100%;
-      max-width: 600px;
+      padding: 20px;
     }
 
     .btn {
-      background-color: #00E9D2;
       color: #383838;
+      margin-right: 8px; /* Espacio entre botones */
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #ffffff;
     }
 
     h1 {
@@ -55,6 +70,18 @@ $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
 
     .form-group label {
       color: #383838;
+    }
+
+    .form-group {
+      margin-bottom: 16px; /* Espacio entre filtros */
+    }
+
+    .form-control {
+      margin-bottom: 8px; /* Espacio entre campos de formulario */
+    }
+
+    .buttons {
+      margin-top: 20px; /* Espacio adicional para botones */
     }
   </style>
 
@@ -72,18 +99,13 @@ $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
   <div class="wrapper">
+
     <div class="content-wrapper">
       <section class="content-header">
         <div class="container-fluid">
           <div class="row">
             <div class="">
               <h1>Agregar producto</h1>
-            </div>
-            <div class="col-sm-6">
-              <nav>
-                <a href="#">Inicio</a>
-                <a href="#">FAQ</a>
-              </nav>
             </div>
           </div>
         </div>
@@ -138,11 +160,9 @@ $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
                     <label for="newCategoryName">Nueva categoría</label>
                     <input type="text" id="newCategoryName" name="new_category" class="form-control">
                   </div>
-                  <div class="row justify-content-center mt-3">
-                    <div class="col-12 text-center">
-                      <a href="listasProducto.php" class="btn btn-secondary">Cancelar</a>
-                      <input type="submit" value="Enviar" class="btn btn-success">
-                    </div>
+                  <div class="buttons text-center">
+                    <a href="listasProducto.php" class="btn btn-secondary">Cancelar</a>
+                    <input type="submit" value="Enviar" class="btn btn-success">
                   </div>
                 </form>
               </div>
@@ -156,3 +176,4 @@ $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 </html>
+
