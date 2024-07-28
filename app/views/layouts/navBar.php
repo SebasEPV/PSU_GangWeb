@@ -65,22 +65,22 @@
             <li class="has-children">
               <a href="#blog-section" class="nav-link">Guías</a>
               <ul class="dropdown">
-                <a href="" class="nav-link" id="">Topologías</a>
-                <a href="" class="nav-link" id="">Comunicados</a>
-                <a href="" class="nav-link" id="">Ensambles</a>
+                <a href="./../client/guias/topology.php" class="nav-link" id="">Topologías</a>
+                <a href="./../client/guias/pressReleases.php" class="nav-link" id="">Comunicados</a>
+                <a href="./../client/guias/computers.php" class="nav-link" id="">Ensambles</a>
                 <li class="has-children">
                   <a href="" class="nav-link" id="">Undervolt</a>
                   <ul class="dropdown">
-                    <li><a href="">AMD</a></li>
-                    <li><a href="">NVIDIA</a></li>
+                    <li><a href="./../client/guias/UV/amd.php">AMD</a></li>
+                    <li><a href="./../client/guias/UV/nvidia.php">NVIDIA</a></li>
                     <li></li>
                   </ul>
                 </li>
                 <li class="has-children">
                   <a href="">Tablas rendimiento</a>
                   <ul class="dropdown">
-                    <li><a href="">GPU</a></li>
-                    <li><a href="">CPU</a></li>
+                    <li><a href="./../client/guias/tablasRendimiento/gpu.php">GPU</a></li>
+                    <li><a href="./../client/guias/tablasRendimiento/gpu.php">CPU</a></li>
                   </ul>
                   </ui>
                 </li>
@@ -89,16 +89,16 @@
             <li class="has-children">
               <a href="#blog-section" class="nav-link">Reseñas</a>
               <ul class="dropdown">
-                <a href="" class="nav-link" id="">Fuentes de poder</a>
-                <a href="" class="nav-link" id="">Tarjetas madre</a>
-                <a href="" class="nav-link" id="">Unidades de almacenamiento</a>
+                <a href="./../client/reseñas/psuList.php" class="nav-link" id="">Fuentes de poder</a>
+                <a href="./../client/reseñas/motherboards.php" class="nav-link" id="">Tarjetas madre</a>
+                <a href="./../client/reseñas/ssdList.php" class="nav-link" id="">Unidades de almacenamiento</a>
                 <li class="has-children">
                   <a href="">Perifericos</a>
                   <ul class="dropdown">
-                    <li><a href="">Teclados</a></li>
-                    <li><a href="">Ratones</a></li>
-                    <li><a href="">Audífonos</a></li>
-                    <li><a href="">Microfonos</a></li>
+                    <li><a href="./../client/reseñas/perifericos/keyboards.php">Teclados</a></li>
+                    <li><a href="./../client/reseñas/perifericos/mouses.php">Ratones</a></li>
+                    <li><a href="./../client/reseñas/perifericos/headphones.php">Audífonos</a></li>
+                    <li><a href="./../client/reseñas/perifericos/microphones.php">Microfonos</a></li>
                   </ul>
                 </li>
               </ul>
@@ -106,18 +106,18 @@
             <li class="has-children">
               <a href="#blog-section" class="nav-link">Tier Lists</a>
               <ul class="dropdown">
-                <a href="" class="nav-link" id="">Fuentes de poder</a>
-                <a href="" class="nav-link" id="">Tarjetas madre</a>
-                <a href="" class="nav-link" id="">Monitores</a>
-                <a href="" class="nav-link" id="">Unidades de almacenamiento</a>
-                <a href="" class="nav-link" id="">Disipadores</a>
+                <a href="./../client/psuList.php" class="nav-link" id="">Fuentes de poder</a>
+                <a href="./../client/tierLists/motherboards.php" class="nav-link" id="">Tarjetas madre</a>
+                <a href="./../client/tierLists/monitors.php" class="nav-link" id="">Monitores</a>
+                <a href="./../client/tierLists/ssd.php" class="nav-link" id="">Unidades de almacenamiento</a>
+                <a href="./../client/tierLists/heatsinks.php" class="nav-link" id="">Disipadores</a>
                 <li class="has-children">
                   <a href="">Perifericos</a>
                   <ul class="dropdown">
-                    <li><a href="">Teclados</a></li>
-                    <li><a href="">Ratones</a></li>
-                    <li><a href="">Audífonos</a></li>
-                    <li><a href="">Microfonos</a></li>
+                  <li><a href="./../client/tierLists/perifericos/keyboards.php">Teclados</a></li>
+                    <li><a href="./../client/tierLists/perifericos/mouses.php">Ratones</a></li>
+                    <li><a href="./../client/tierLists/perifericos/headphones.php">Audífonos</a></li>
+                    <li><a href="./../client/tierLists/perifericos/microphones.php">Microfonos</a></li>
                   </ul>
                 </li>
               </ul>
