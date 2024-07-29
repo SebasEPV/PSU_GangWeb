@@ -1,5 +1,7 @@
 <?php
 require './../../../../config/config.php';
+session_start();
+$isLoggedIn = isset($_SESSION['email']);
 
 $review_id = isset($_GET['review_id']) ? intval($_GET['review_id']) : 0;
 
@@ -27,6 +29,23 @@ $review = $consulta->fetch(PDO::FETCH_ASSOC);
 if (!$review) {
     die("Reseña no encontrada.");
 }
+
+// Consulta para obtener los comentarios relacionados con la reseña
+$commentQuery = "
+    SELECT comments.*, users.username 
+    FROM comments
+    JOIN users ON comments.fk_user_id = users.user_id
+    WHERE comments.fk_review_id = :review_id
+    ORDER BY comments.comments_id DESC";
+
+$commentConsulta = $enlace->prepare($commentQuery);
+$commentConsulta->bindValue(':review_id', $review_id, PDO::PARAM_INT);
+
+if (!$commentConsulta->execute()) {
+    die("Query failed: " . print_r($commentConsulta->errorInfo(), true));
+}
+
+$comments = $commentConsulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -103,11 +122,75 @@ if (!$review) {
         .btn-back {
             margin-top: 20px;
         }
+        
+        .comment-card {
+            margin-top: 10px;
+        }
+
+        header {
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .navbar-nav .nav-link {
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #007bff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #0056b3;
+        }
+
+        .btn-success {
+            background-color: #007bff; /* Azul */
+            border: none;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Rojo */
+            border: none;
+            color: #fff;
+        }
     </style>
 </head>
 
 <body>
-<?php include 'navBar.php'; ?>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="mainClient.php">Inicio</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="./../client/nosotros/faq.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../client/reseñas/reviews.php">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../client/gestionarComentarios/commentsSection.php">Comentarios</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Soporte técnico</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="./../client/soporteTecnico/locations.php">Ubicaciones</a></li>
+                            <li><a class="dropdown-item" href="./../client/soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
+                            <li><a class="dropdown-item" href="./../client/soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
+                        </ul>
+                    </li>
+                    <?php if ($isLoggedIn): ?>
+                        <li class="nav-item"><a href="./../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a href="./../auth/login.php" class="btn btn-success">Regístrate</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -121,7 +204,42 @@ if (!$review) {
                 <a href="./reviews.php" class="btn btn-custom-back">Regresar</a>
             </div>
         </div>
+        
+        <!-- Sección de Comentarios -->
+        <div class="card comment-card">
+            <div class="card-body">
+                <h4 class="card-title">Comentarios</h4>
+                <?php if (empty($comments)): ?>
+                    <p>No hay comentarios para esta reseña.</p>
+                <?php else: ?>
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($comment['username']); ?></h5>
+                                <p class="card-text"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+                <!-- Formulario para agregar un comentario -->
+                <?php if ($isLoggedIn): ?>
+                    <h4 class="card-title">Agregar un comentario</h4>
+                    <form method="POST" action="add_comment.php">
+                        <input type="hidden" name="review_id" value="<?php echo htmlspecialchars($review_id); ?>">
+                        <div class="form-group">
+                            <textarea name="content" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom-add mt-2">Agregar Comentario</button>
+                    </form>
+                <?php else: ?>
+                    <p><a href="./auth/login.php">Inicia sesión</a> para agregar un comentario.</p>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

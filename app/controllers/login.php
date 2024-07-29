@@ -42,4 +42,3 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
         die("Error en la consulta: " . print_r($enlace->errorInfo(), true));
     }
 }
-?>

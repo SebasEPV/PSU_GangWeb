@@ -77,91 +77,30 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
             color: #383838;
         }
 
-        .btn-custom {
-            background-color: #00E9D2;
-            border: solid #383838 1px;
-            color: #383838;
-            margin-right: 8px;
-        }
-
-        .btn-custom-edit {
-            background-color: #28a745;
-            border: solid #383838 1px;
-            color: #ffffff;
-            margin-right: 8px;
-        }
-
-        .btn-custom-danger {
-            background-color: #dc3545;
-            border: solid #383838 1px;
-            color: #ffffff;
-            margin-right: 8px;
-        }
-
-        .btn-custom-add {
-            background-color: #007bff;
-            border: solid #383838 1px;
-            color: #ffffff;
-            margin-right: 8px;
-        }
-
-        .btn-custom-filter {
-            background-color: #ffc107;
-            border: solid #383838 1px;
-            color: #383838;
-            margin-right: 8px;
-        }
-
-        .navbar {
-            margin-bottom: 20px;
-        }
-
-        .navbar-nav .nav-link {
-            color: #383838;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #00E9D2;
-        }
-
-        .table th,
-        .table td {
-            text-align: center;
-        }
-
-        .expand-content {
-            display: none;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            margin-left: 8px;
-        }
-
         .filter-container {
             margin-top: 10px;
             display: flex;
             gap: 10px;
         }
 
-        .form-control {
+        .form-control,
+        .form-select {
             margin-right: 8px;
         }
 
-        .form-select {
-            margin-right: 8px;
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-item:last-child {
+            margin-right: 0;
         }
     </style>
 </head>
 
 <body>
-<?php include 'navBar.php'; ?>
+    <?php include 'navBar.php'; ?>
+
     <section class="content-header">
         <div class="container-fluid">
             <h1>Reseñas</h1>
@@ -191,7 +130,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <button type="submit" class="btn btn-custom-filter">Filtrar</button>
+                    <button type="submit" class="btn btn-warning">Filtrar</button>
                 </form>
             </div>
         </div>
