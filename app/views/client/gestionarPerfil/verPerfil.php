@@ -2,9 +2,10 @@
 session_start();
 
 if (!isset($_SESSION['email'])) {
-    header('Location: ./../../auth/login.php?err=6');
+   header('Location: ./../../auth/login.php?err=6');
     exit;
 }
+
 require("./../../../../config/database.php");
 
 $con = new Database;
@@ -44,7 +45,6 @@ if ($query->execute()) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        
         body {
             background-color: #DDDCDB;
             margin: 20px;
@@ -87,24 +87,8 @@ if ($query->execute()) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="./../gestionarPerfil/verPerfil.php">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../gestionarProductos/listasProducto.php">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../../../controllers/logout.php">Cerrar Sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navBar.php'; ?>
+    <?php include './../refs.html'; ?>
 
     <div class="profile-container">
         <h1>Perfil de Usuario</h1>

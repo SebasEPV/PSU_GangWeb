@@ -49,7 +49,7 @@ $isLoggedIn = isset($_SESSION['email']);
                         <li><a href="./../client/soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
                     </ul>
                 </li>
-                <li><a href="./../client/gestionarComentarios/commentsSection.php">Gestionar perfil</a></li>
+                <li><a href="./../client/gestionarPerfil/verPerfil.php">Gestionar perfil</a></li>
                 <?php if ($isLoggedIn) : ?>
                     <li><a href="./../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
                 <?php else : ?>
