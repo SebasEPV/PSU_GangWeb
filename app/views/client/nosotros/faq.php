@@ -191,14 +191,14 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div>
                     <h2>Redes Sociales</h2>
-                    <a class="social-icon" href="https://www.instagram.com/psugangts/">
+                    <a target="_blank" class="social-icon" href="https://www.instagram.com/psugangts/">
                         <ion-icon name="logo-instagram"></ion-icon>
                     </a>
-                    <a class="social-icon" href="https://psugang.github.io/">
+                    <a target="_blank" class="social-icon" href="https://psugang.github.io/">
                         <ion-icon name="logo-github"></ion-icon>
                     </a>
                     </a>
-                    <a class="social-icon" href="https://www.facebook.com/PSUG4ng">
+                    <a target="_blank" class="social-icon" href="https://www.facebook.com/PSUG4ng">
                         <ion-icon name="logo-facebook"></ion-icon>
                     </a>
                 </div>
