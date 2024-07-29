@@ -20,12 +20,14 @@ $isLoggedIn = isset($_SESSION['email']);
         }
 
         .btn-success {
-            background-color: #007bff; /* Azul */
+            background-color: #007bff;
+            /* Azul */
             border: none;
         }
 
         .btn-danger {
-            background-color: #dc3545; /* Rojo */
+            background-color: #dc3545;
+            /* Rojo */
             border: none;
         }
     </style>
@@ -35,8 +37,7 @@ $isLoggedIn = isset($_SESSION['email']);
     <header>
         <nav>
             <ul>
-                <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
-                <li><a href="./../nosotros/faq.php">Nosotros</a></li>
+                <li><a href="./../nosotros/faq.php">Inicio</a></li>
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
 
                 <li class="has-children">
@@ -48,9 +49,9 @@ $isLoggedIn = isset($_SESSION['email']);
                     </ul>
                 </li>
                 <li><a href="./../gestionarPerfil/verPerfil.php">Gestionar perfil</a></li>
-                <?php if ($isLoggedIn): ?>
+                <?php if ($isLoggedIn) : ?>
                     <li><a href="./../../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
-                <?php else: ?>
+                <?php else : ?>
                     <li><a href="./../../auth/login.php" class="btn btn-success">Regístrate</a></li>
                 <?php endif; ?>
             </ul>

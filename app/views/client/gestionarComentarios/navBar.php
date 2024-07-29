@@ -5,7 +5,7 @@ $isLoggedIn = isset($_SESSION['email']);
 if (!isset($_SESSION['email'])) {
     header('Location: ./../../auth/login.php?err=6');
     exit;
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +26,14 @@ if (!isset($_SESSION['email'])) {
         }
 
         .btn-success {
-            background-color: #007bff; /* Azul */
+            background-color: #007bff;
+            /* Azul */
             border: none;
         }
 
         .btn-danger {
-            background-color: #dc3545; /* Rojo */
+            background-color: #dc3545;
+            /* Rojo */
             border: none;
         }
     </style>
@@ -40,24 +42,22 @@ if (!isset($_SESSION['email'])) {
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
-                <li><a href="./../nosotros/faq.php">Nosotros</a></li>
-                <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
-                <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
-                <li class="has-children">
-                    <a class="nav-link">Soporte técnico</a>
-                    <ul class="dropdown">
-                        <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
-                        <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
-                        <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
-                    </ul>
-                </li>
-                <?php if ($isLoggedIn): ?>
-                    <li><a href="./../../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
-                <?php else: ?>
-                    <li><a href="./../../auth/login.php" class="btn btn-success">Regístrate</a></li>
-                <?php endif; ?>
+            <li><a href="./../nosotros/faq.php">Inicio</a></li>
+            <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
+            <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
+            <li class="has-children">
+                <a class="nav-link">Soporte técnico</a>
+                <ul class="dropdown">
+                    <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
+                    <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
+                    <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
+                </ul>
+            </li>
+            <?php if ($isLoggedIn) : ?>
+                <li><a href="./../../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
+            <?php else : ?>
+                <li><a href="./../../auth/login.php" class="btn btn-success">Regístrate</a></li>
+            <?php endif; ?>
             </ul>
         </nav>
     </header>

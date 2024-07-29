@@ -5,7 +5,7 @@ $isLoggedIn = isset($_SESSION['email']);
 if (!isset($_SESSION['email'])) {
     header('Location: ./../../auth/login.php?err=6');
     exit;
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,8 +97,7 @@ if (!isset($_SESSION['email'])) {
     <header>
         <nav>
             <ul>
-                <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
-                <li><a href="./../nosotros/faq.php">Nosotros</a></li>
+                <li><a href="./../nosotros/faq.php">Inicio</a></li>
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
                 <li class="has-children">
                     <a class="nav-link">Soporte técnico</a>
