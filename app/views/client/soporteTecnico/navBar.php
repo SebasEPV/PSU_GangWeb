@@ -1,3 +1,7 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['email']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +28,12 @@
                         <li><a href="wattageCalculator.php">Calculadora de wattage</a></li>
                     </ul>
                 </li>
-                <li><a href="./../../auth/login.php" class="registro">Regístrate</a></li>
+
+                <?php if ($isLoggedIn) : ?>
+                    <li><a href="./../../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
+                <?php else : ?>
+                    <li><a href="./../../auth/login.php" class="btn btn-success">Regístrate</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

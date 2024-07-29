@@ -86,7 +86,7 @@
 <body>
 
 
-    <?php include './../../layouts/navBar.php'; ?>
+    <?php include 'navBar.php'; ?>
     <?php include './../refs.html'; ?>
 
     <?php
