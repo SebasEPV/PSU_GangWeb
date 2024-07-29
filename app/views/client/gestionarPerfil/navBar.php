@@ -42,7 +42,7 @@ $isLoggedIn = isset($_SESSION['email']);
 
                 <li class="has-children">
                     <a class="nav-link">Soporte técnico</a>
-                    <ul class="dropdown">
+                    <ul class="dropdown position-absolute z-1">
                         <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
                         <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
                         <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>

@@ -25,7 +25,7 @@ if (!isset($_SESSION['email'])) {
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
                 <li class="has-children">
                     <a class="nav-link">Soporte técnico</a>
-                    <ul class="dropdown">
+                    <ul class="dropdown position-absolute z-1">
                         <li><a href="locations.php">Ubicaciones</a></li>
                         <li><a href="chatbotLiz.php">Platica con Liz</a></li>
                         <li><a href="wattageCalculator.php">Calculadora de wattage</a></li>
