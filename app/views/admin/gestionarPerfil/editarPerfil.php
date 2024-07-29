@@ -34,7 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $new_email = $_POST['email'];
+        $current_password = $_POST['current_password'] ?? '';
+        $new_password = $_POST['new_password'] ?? '';
+        $confirm_password = $_POST['confirm_password'] ?? '';
 
+        // Actualizar información del usuario
         $updateQuery = $enlace->prepare("UPDATE users SET username = :username, first_name = :first_name, last_name = :last_name, email = :new_email WHERE email = :email");
         $updateQuery->bindParam(':username', $username, PDO::PARAM_STR);
         $updateQuery->bindParam(':first_name', $first_name, PDO::PARAM_STR);
@@ -43,9 +47,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updateQuery->bindParam(':email', $email, PDO::PARAM_STR);
 
         if ($updateQuery->execute()) {
-            $_SESSION['email'] = $new_email;
-            header('Location: ./verPerfil.php');
-            exit;
+            // Actualizar la contraseña si es necesario
+            if (!empty($current_password) && !empty($new_password) && $new_password === $confirm_password) {
+                $user = $enlace->query("SELECT password FROM users WHERE email = '$email'")->fetch(PDO::FETCH_ASSOC);
+
+                if (password_verify($current_password, $user['password'])) {
+                    $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+                    $passwordUpdateQuery = $enlace->prepare("UPDATE users SET password = :new_password WHERE email = :email");
+                    $passwordUpdateQuery->bindParam(':new_password', $hashed_new_password, PDO::PARAM_STR);
+                    $passwordUpdateQuery->bindParam(':email', $email, PDO::PARAM_STR);
+
+                    if ($passwordUpdateQuery->execute()) {
+                        $_SESSION['email'] = $new_email;
+                        header('Location: ./verPerfil.php');
+                        exit;
+                    } else {
+                        $error = "Error al actualizar la contraseña.";
+                    }
+                } else {
+                    $error = "La contraseña actual es incorrecta.";
+                }
+            } else {
+                $_SESSION['email'] = $new_email;
+                header('Location: ./verPerfil.php');
+                exit;
+            }
         } else {
             $error = "Error al actualizar los datos.";
         }
@@ -53,8 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,10 +134,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <h1>Editar Perfil</h1>
-        <?php if (isset($error)) { echo "<div class='alert alert-danger'>$error</div>"; } ?>
+        <?php if (isset($error)) {
+            echo "<div class='alert alert-danger'>$error</div>";
+        } ?>
         <form method="POST">
             <div class="form-group">
                 <label for="username">Nombre de usuario</label>
@@ -134,4 +165,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 </body>
+
 </html>

@@ -1,6 +1,13 @@
 <?php
 require("./../../../../config/database.php");
 
+session_start();
+
+if (!isset($_SESSION['email'])) {
+  header('Location: ./../../auth/login.php?err=6');
+  exit;
+}
+
 $con = new Database;
 $enlace = $con->getConnection();
 
@@ -167,7 +174,7 @@ if (isset($_GET['delete'])) {
                         <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../auth/logout.php">Cerrar Sesión</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../../../controllers/logout.php">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>

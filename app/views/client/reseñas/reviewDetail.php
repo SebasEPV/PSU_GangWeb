@@ -108,7 +108,10 @@ if (!$review) {
 
 <body>
 <?php include 'navBar.php'; ?>
+<<<<<<< HEAD
 <?php include './../refs.html' ?>
+=======
+>>>>>>> f8c0acccae000df7bf33fd3192b5eabc80ec3299
     <div class="container">
         <div class="card">
             <div class="card-body">
