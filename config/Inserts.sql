@@ -136,3 +136,48 @@ INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (8, 10); -
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (9, 1); -- Western Digital Blue 1TB en categoría SSD
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (10, 2); -- G.Skill Trident Z RGB 32GB en categoría RAM
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (11, 6); -- cx450
+
+INSERT INTO comments (content, fk_user_id, fk_review_id) VALUES
+('¡Totalmente de acuerdo! Este SSD es realmente impresionante.', 1, 1),
+('Para el precio, no se puede pedir más. Muy buen SSD.', 2, 2),
+('Sin duda, una de las mejores RAMs que he usado para gaming.', 3, 3),
+('Me ha mejorado mi precisión en los juegos, excelente.', 4, 4),
+('La placa base es robusta y estable, excelente para mi configuración.', 1, 5),
+('La calidad gráfica es sobresaliente, incluso en los juegos más exigentes.', 2, 6),
+('El teclado es muy cómodo para largas sesiones de escritura.', 3, 7),
+('Gran capacidad para almacenar todos mis archivos importantes.', 4, 8),
+('El rendimiento es más que suficiente para mis necesidades diarias.', 1, 9),
+('El diseño RGB hace que mi PC se vea increíble y el rendimiento es top.', 2, 10),
+
+('La velocidad del SSD me ha sorprendido gratamente.', 1, 1),
+('Buen rendimiento, pero no es el mejor en términos de durabilidad.', 2, 2),
+('Una gran opción para quienes necesitan RAM rápida para juegos.', 3, 3),
+('Excelente precisión para juegos FPS, muy recomendable.', 4, 4),
+('Buena opción para un sistema de gama alta.', 1, 5),
+('Una tarjeta gráfica muy poderosa, vale cada centavo.', 2, 6),
+('El teclado tiene una respuesta táctil que mejora mi experiencia de escritura.', 3, 7),
+('Perfecto para almacenar juegos y aplicaciones sin preocupaciones.', 4, 8),
+('Ideal para usuarios que buscan una buena relación calidad-precio.', 1, 9),
+('Un componente estético que también ofrece un rendimiento excelente.', 2, 10),
+
+('Estoy muy satisfecho con la velocidad de este producto.', 1, 1),
+('Un SSD de buena relación calidad-precio para un uso general.', 2, 2),
+('Rendimiento sólido, aunque podría ser un poco más rápido.', 3, 3),
+('La precisión del ratón mejora mi desempeño en juegos.', 4, 4),
+('Excelente placa base con muchas características útiles.', 1, 5),
+('Los gráficos son simplemente impresionantes, ideal para juegos modernos.', 2, 6),
+('El teclado tiene una respuesta que me encanta, ideal para gaming.', 3, 7),
+('El espacio de almacenamiento es perfecto para mi setup.', 4, 8),
+('Una opción sólida para quienes no necesitan la máxima velocidad.', 1, 9),
+('Una memoria RAM que combina estética y gran rendimiento.', 2, 10),
+
+('Muy buen rendimiento en tareas intensivas.', 1, 1),
+('No es el mejor en su clase, pero cumple con lo prometido.', 2, 2),
+('Perfecta para un sistema que requiere mucho multitasking.', 3, 3),
+('Recomiendo esta opción para jugadores serios.', 4, 4),
+('La placa base cumple bien su función, aunque podría tener más puertos.', 1, 5),
+('Excelente para juegos en alta resolución.', 2, 6),
+('Teclado robusto con buen feedback táctil.', 3, 7),
+('Un buen disco duro con mucho espacio y rendimiento aceptable.', 4, 8),
+('Un buen SSD para usuarios generales, sin sorpresas.', 1, 9),
+('Rendimiento y estética en un solo paquete.', 2, 10);
