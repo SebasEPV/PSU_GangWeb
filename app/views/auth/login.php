@@ -28,6 +28,9 @@
     #error{
       color: red;
     }
+    #success{
+      color: green;
+    }
   </style>
 </head>
 
@@ -55,15 +58,12 @@
               if (isset($_GET['err']) && $_GET['err'] == 6){
                 echo '<p id= error>Necesitas ingresar sesión</p>';
               }
+              if (isset($_GET['success']) && $_GET['success'] == 1){
+                echo '<p id= success>Tu contraseña ha sido cambiada</p>';
+              }
             ?>
           </div>
           <div class="row">
-            <div class="col-6">
-              <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">Recuerdame</label>
-              </div>
-            </div>
             <div class="col-6">
               <button type="submit" class="btn">Iniciar Sesión</button>
             </div>

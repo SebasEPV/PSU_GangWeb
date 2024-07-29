@@ -50,7 +50,7 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Ingresa tu correo con el cual te registraste.</p>
-        <form action="./../BackEnd/mandar_correo.php" method="post">
+        <form action="./../../controllers/cambiarContra.php" method="post">
           <div class="input-group mb-3">
             <input type="email" class="form-control email" placeholder="Correo" name="email">
           </div>

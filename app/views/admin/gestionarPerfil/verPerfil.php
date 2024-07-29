@@ -132,7 +132,7 @@ if ($query->execute()) {
             <a href="./editarPerfil.php" class="btn btn-primary mt-3">Editar Información</a>
             <!-- Mostrar botón solo si el usuario es administrador -->
             <?php if ($user['permissions']): ?>
-                <a href="./../../layouts/mainClient.php" class="btn btn-primary mt-3">Vista de Cliente</a>
+                <a href="./../../client/nosotros/faq.php" class="btn btn-primary mt-3">Vista de Cliente</a>
             <?php endif; ?>
         </div>
     </div>

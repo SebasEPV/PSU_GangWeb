@@ -157,7 +157,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                                     <?php foreach ($reviews as $row) : ?>
                                         <tr>
                                             <td class="text-center"><?php echo htmlspecialchars($row['review_id']); ?></td>
-                                            <td class="text-center"><a href="reviewDetail.php?review_id=<?php echo htmlspecialchars($row['review_id']); ?>"><?php echo htmlspecialchars($row['title']); ?></a></td>
+                                            <td class="text-center"><a href="./../reseñas/reviewDetail.php?review_id=<?php echo htmlspecialchars($row['review_id']); ?>"><?php echo htmlspecialchars($row['title']); ?></a></td>
                                             <td class="text-center"><?php echo htmlspecialchars($row['product_name']); ?></td>
                                             <td class="text-center"><?php echo htmlspecialchars($row['username']); ?></td>
                                             <td class="text-center"><?php echo htmlspecialchars($row['tier_name']); ?></td>
@@ -186,27 +186,37 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                         color: #aaaaaa;
                     }
                 </style>
-                <h2>Redes Sociales</h2>
-                <a class="social-icon" href="https://www.instagram.com/psugangts/">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-                <a class="social-icon" href="https://psugang.github.io/">
-                    <ion-icon name="logo-github"></ion-icon>
-                </a>
-                </a>
-                <a class="social-icon" href="https://www.facebook.com/PSUG4ng">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </a>
+                <div>
+
+                </div>
+                <div>
+                    <h2>Redes Sociales</h2>
+                    <a class="social-icon" href="https://www.instagram.com/psugangts/">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                    <a class="social-icon" href="https://psugang.github.io/">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                    </a>
+                    <a class="social-icon" href="https://www.facebook.com/PSUG4ng">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </div>
                 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
                 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
             </section>
+            <div>
+                       
+            
+
+            </div>
         </section>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+        <p>&copy.</p>
     </footer>
 
     <script src="./../../../../public/assets/js/faq.js"></script>
