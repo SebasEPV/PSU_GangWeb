@@ -52,6 +52,9 @@
               if (isset($_GET['err']) && $_GET['err'] == 1){
                 echo '<p id= error>Correo o contraseña incorrecta</p>';
               }
+              if (isset($_GET['err']) && $_GET['err'] == 6){
+                echo '<p id= error>Necesitas ingresar sesión</p>';
+              }
             ?>
           </div>
           <div class="row">

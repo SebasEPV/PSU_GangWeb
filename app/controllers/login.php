@@ -30,7 +30,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
                 header('Location: ./../views/admin/gestionarReseñas/listasReseñas.php');
             } else {
                 // Usuario sin permisos, redirigir a inicio.php
-                header('Location: ./../views/layouts/mainClient.php');
+                header('Location: ./../views/client/nosotros/faq.php');
             }
             exit;
         } else {

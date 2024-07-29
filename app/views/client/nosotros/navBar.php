@@ -1,6 +1,11 @@
 <?php
 session_start();
 $isLoggedIn = isset($_SESSION['email']);
+
+if (!isset($_SESSION['email'])) {
+   header('Location: ./../../auth/login.php?err=6');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,7 @@
 <?php
 require './../../../../config/config.php';
 
+
 // Consultas para obtener datos de filtros
 $brands = $enlace->query("SELECT * FROM brands")->fetchAll(PDO::FETCH_ASSOC);
 $categories = $enlace->query("SELECT * FROM categories")->fetchAll(PDO::FETCH_ASSOC);

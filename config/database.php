@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "psuGangWeb";
-    private $username = "root";
-    private $password = "admin";
+    private $username = "Sebastian";
+    private $password = "Sebas.2003";
     public $connection ;
     public function getConnection() {
      $this->connection = null;
