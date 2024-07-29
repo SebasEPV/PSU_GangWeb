@@ -99,7 +99,8 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <?php include 'navBar.php'; ?>
+<?php include 'navBar.php'; ?>
+<?php include './../refs.html'; ?>
 
     <section class="content-header">
         <div class="container-fluid">

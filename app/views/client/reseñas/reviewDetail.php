@@ -1,7 +1,5 @@
 <?php
 require './../../../../config/config.php';
-session_start();
-$isLoggedIn = isset($_SESSION['email']);
 
 $review_id = isset($_GET['review_id']) ? intval($_GET['review_id']) : 0;
 
@@ -98,7 +96,7 @@ $comments = $commentConsulta->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .btn-custom-back {
-            background-color: #6c757d; /* Gris */
+            background-color: #dc3545; /* Rojo */
             border: solid #383838 1px;
             color: #ffffff;
         }
@@ -165,31 +163,8 @@ $comments = $commentConsulta->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="mainClient.php">Inicio</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="./../client/nosotros/faq.php">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../client/reseñas/reviews.php">Reseñas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../client/gestionarComentarios/commentsSection.php">Comentarios</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Soporte técnico</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./../client/soporteTecnico/locations.php">Ubicaciones</a></li>
-                            <li><a class="dropdown-item" href="./../client/soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
-                            <li><a class="dropdown-item" href="./../client/soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
-                        </ul>
-                    </li>
-                    <?php if ($isLoggedIn): ?>
-                        <li class="nav-item"><a href="./../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
-                    <?php else: ?>
-                        <li class="nav-item"><a href="./../auth/login.php" class="btn btn-success">Regístrate</a></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php include 'navBar.php'; ?>
+    <?php include './../refs.html' ?>
 
     <div class="container">
         <div class="card">
@@ -201,7 +176,7 @@ $comments = $commentConsulta->fetchAll(PDO::FETCH_ASSOC);
                 <p class="card-text"><strong>Fecha:</strong> <?php echo htmlspecialchars($review['date_review']); ?></p>
                 <p class="card-text"><strong>Contenido:</strong></p>
                 <p class="card-text"><?php echo nl2br(htmlspecialchars($review['content'])); ?></p>
-                <a href="./reviews.php" class="btn btn-custom-back">Regresar</a>
+                <a href="./reviews.php" class="btn btn-danger">Regresar</a>
             </div>
         </div>
         
@@ -225,7 +200,7 @@ $comments = $commentConsulta->fetchAll(PDO::FETCH_ASSOC);
                 <!-- Formulario para agregar un comentario -->
                 <?php if ($isLoggedIn): ?>
                     <h4 class="card-title">Agregar un comentario</h4>
-                    <form method="POST" action="add_comment.php">
+                    <form method="POST" action="./../../../controllers/crearComentario.php">
                         <input type="hidden" name="review_id" value="<?php echo htmlspecialchars($review_id); ?>">
                         <div class="form-group">
                             <textarea name="content" class="form-control" rows="3" required></textarea>

@@ -45,6 +45,7 @@ $locations = $queryLocatiosn->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <?php include 'navBar.php'?>
+    <?php include './../refs.html'?>
     <h1>Ubica nuestras casas de soporte tecnico</h1>
     <table class="table">
             <tr>
