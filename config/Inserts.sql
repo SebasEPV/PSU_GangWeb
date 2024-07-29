@@ -5,6 +5,9 @@ VALUES	('Sebas_EPV', 'Sebastian', 'Perez', '12345', 'sebas@gmail.com', True),
 		('Carlos_GM', 'Carlos', 'Gonzales', '12345', 'carlos@gmail.com', True),
 		('Bryan_NC', 'Bryan', 'Navarrete', '12345', 'bryan@gmail.com', True),
         ('Nahui_PP', 'Nahui', 'Perez', '12345', 'nahui@gmail.com', True);
+
+INSERT INTO users(username, first_name, last_name, pass, email, permissions)
+	VALUES('clientTest', 'client', 'test', '12345', 'client@gmail.com', false);
         
 INSERT INTO tiers (tier_name, tier_description) VALUES ('A', 'Productos de gama alta con excelente rendimiento');
 INSERT INTO tiers (tier_name, tier_description) VALUES ('B', 'Productos de alta calidad con grandes características');

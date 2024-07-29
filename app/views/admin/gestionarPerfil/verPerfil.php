@@ -94,7 +94,7 @@ if ($query->execute()) {
                     <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../auth/logout.php">Cerrar Sesión</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../../../controllers/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>
