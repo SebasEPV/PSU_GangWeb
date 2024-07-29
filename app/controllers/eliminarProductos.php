@@ -1,20 +1,39 @@
 <?php
-mysqli_report(MYSQLI_REPORT_OFF);
-
-session_start();
 require("./../../config/database.php");
 
 $con = new Database;
 $enlace = $con->getConnection();
 
 if (!$enlace) {
-    throw new Exception("Error al establecer la conexión a la base de datos.");
+  throw new Exception("Error al establecer la conexión a la base de datos.");
 }
 
+if (isset($_GET['id'])) {
+  $productId = $_GET['id'];
 
-if (isset($_GET['id'])){
-    $id = $_GET['id'];
-    $consulta = "DELETE FROM products WHERE product_id = " . $id;
-    $result = $enlace->query($consulta);
+  try {
+    // Start transaction
+    $enlace->beginTransaction();
+
+    // Delete references in product_categories
+    $stmt = $enlace->prepare("DELETE FROM product_categories WHERE fk_product_id = :productId");
+    $stmt->execute(['productId' => $productId]);
+
+    // Delete the product
+    $stmt = $enlace->prepare("DELETE FROM products WHERE product_id = :productId");
+    $stmt->execute(['productId' => $productId]);
+
+    // Commit transaction
+    $enlace->commit();
+
+    // Redirect or show success message
+    header("Location: ./../views/admin/gestionarProductos/listasProducto.php");
+    exit;
+  } catch (Exception $e) {
+    // Rollback transaction if something failed
+    $enlace->rollBack();
+    echo "Failed: " . $e->getMessage();
+  }
+} else {
+  echo "No product ID provided.";
 }
-header('Location:./../views/admin/gestionarProductos/listasProducto.php');

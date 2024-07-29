@@ -171,6 +171,12 @@ $results = $consulta->fetchAll(PDO::FETCH_ASSOC);
         content.style.display = 'none';
       }
     }
+
+    function confirmDeletion(productId) {
+      if (confirm("¿Está seguro de que desea eliminar este producto?")) {
+        window.location.href = "./../../../controllers/eliminarProductos.php?id=" + productId;
+      }
+    }
   </script>
 </head>
 
@@ -193,7 +199,7 @@ $results = $consulta->fetchAll(PDO::FETCH_ASSOC);
               <a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Comentarios</a>
+              <a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a>
             </li>
           </ul>
         </div>
@@ -279,7 +285,7 @@ $results = $consulta->fetchAll(PDO::FETCH_ASSOC);
                       <td><?php echo htmlspecialchars($row['product_price']); ?></td>
                       <td>
                         <a href="./editarProducto.php?id=<?php echo $row['product_id']; ?>" class="btn btn-custom-edit">Editar</a>
-                        <a href="#" onclick="confirmDeletion('./../../../controllers/eliminarProducto.php?id=<?php echo $row['product_id']; ?>'); return false;" class="btn btn-custom-danger">Eliminar producto</a>
+                        <a href="#" onclick="confirmDeletion(<?php echo $row['product_id']; ?>); return false;" class="btn btn-custom-danger">Eliminar producto</a>
                       </td>
                     </tr>
                     <tr id="description-<?php echo $row['product_id']; ?>" class="expand-content">

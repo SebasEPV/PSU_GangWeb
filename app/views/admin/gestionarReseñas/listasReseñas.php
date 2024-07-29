@@ -194,7 +194,7 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <li class="nav-item"><a class="nav-link" href="">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./../gestionarProductos/listasProducto.php">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Reseñas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Comentarios</a></li>
+                    <a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a>
                 </ul>
             </div>
         </div>
