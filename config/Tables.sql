@@ -2,6 +2,7 @@ CREATE DATABASE psuGangWeb;
 USE psuGangWeb;
 
 
+
 CREATE TABLE users(
     user_id INT AUTO_INCREMENT PRIMARY KEY, 
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -60,6 +61,14 @@ CREATE TABLE product_categories(
     CONSTRAINT fk_category_id_product_categories FOREIGN KEY (fk_category_id) REFERENCES categories(category_id)
 );
 
+CREATE TABLE restablecerContraseña(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(30) NOT NULL,
+    token VARCHAR(100) NOT NULL,
+    expire_Date DATETIME NOT NULL
+);
+
+
 CREATE TABLE comments (
 	comments_id INT PRIMARY KEY AUTO_INCREMENT,
     content TEXT,
@@ -69,11 +78,11 @@ CREATE TABLE comments (
 	CONSTRAINT fk_review_id_comments FOREIGN KEY (fk_review_id) REFERENCES reviews(review_id)
 );
 
-CREATE TABLE restablecerContraseña(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(30) NOT NULL,
-    token VARCHAR(100) NOT NULL,
-    expire_Date DATETIME NOT NULL
+CREATE TABLE locations (
+	location_id INT PRIMARY KEY AUTO_INCREMENT,
+    location VARCHAR(30),
+    email VARCHAR(30),
+    phoneNumber VARCHAR(50)
 );
 
 CREATE VIEW consultReviews AS
@@ -92,4 +101,13 @@ pt.fk_product_id = product_id INNER JOIN categories ON category_id =
 fk_category_id INNER JOIN brands ON brand_id =
 fk_brand_id;
 
-DROP DATABASE psugangweb;
+SELECT r.review_id, r.title, r.content, r.date_review, 
+       p.product_name, 
+       b.brand_name, 
+       c.category_name
+FROM reviews r
+INNER JOIN products p ON r.fk_product_id = p.product_id
+INNER JOIN brands b ON p.fk_brand_id = b.brand_id
+INNER JOIN product_categories pc ON p.product_id = pc.fk_product_id
+INNER JOIN categories c ON pc.fk_category_id = c.category_id
+WHERE c.category_id = 6;
