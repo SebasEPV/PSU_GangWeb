@@ -100,7 +100,6 @@ if (!isset($_SESSION['email'])) {
                 <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
                 <li><a href="./../nosotros/faq.php">Nosotros</a></li>
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
-                <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
                 <li class="has-children">
                     <a class="nav-link">Soporte técnico</a>
                     <ul class="dropdown">
@@ -109,6 +108,7 @@ if (!isset($_SESSION['email'])) {
                         <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
                     </ul>
                 </li>
+                <li><a href="./../gestionarPerfil/verPerfil.php">Gestionar perfil</a></li>
                 <?php if ($isLoggedIn) : ?>
                     <li><a href="./../../../controllers/logout.php" class="btn btn-danger">Cerrar Sesión</a></li>
                 <?php else : ?>

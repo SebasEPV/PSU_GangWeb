@@ -1,5 +1,4 @@
 <?php
-//session_start();
 $isLoggedIn = isset($_SESSION['email']);
 ?>
 
@@ -36,7 +35,7 @@ $isLoggedIn = isset($_SESSION['email']);
     <header>
         <nav>
             <ul>
-                <li><a href="./../../public/layouts/mainClient.php">Inicio</a></li>
+                <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
                 <li><a href="./../nosotros/faq.php">Nosotros</a></li>
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
                 <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
