@@ -12,9 +12,13 @@ if (!$enlace) {
 $consulta_marcas = $enlace->query("SELECT brand_id, brand_name FROM brands");
 $marcas = $consulta_marcas->fetchAll(PDO::FETCH_ASSOC);
 
-// Obtener categorías
-$consulta_categorias = $enlace->query("SELECT category_id, category_name FROM categories");
+// Obtener categoría de fuentes de poder
+$consulta_categorias_psu = $enlace->query("SELECT fk_product_id, fk_category_id FROM categories WHERE fk_category_id=6 ");
 $categorias = $consulta_categorias->fetchAll(PDO::FETCH_ASSOC);
+
+//Obtener reseñas
+$consulta_categorias_psu = $enlace->query("SELECT fk_product_id, fk_category_id FROM categories WHERE fk_category_id=6 ");
+$categorias = $consulta_categorias_psu->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>

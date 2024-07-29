@@ -3,7 +3,7 @@ class Database {
     private $host = "localhost";
     private $db_name = "psuGangWeb";
     private $username = "root";
-    private $password = "root";
+    private $password = "admin";
     public $connection ;
     public function getConnection() {
      $this->connection = null;

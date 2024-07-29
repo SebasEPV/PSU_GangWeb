@@ -89,17 +89,21 @@
         }
     }
 
-    foreach ($responses as $conversation) {
-        echo "Usuario: " . $conversation['user'] . "<br>";
-        echo "Liz: " . $conversation['bot'] . "<br><br>";
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message'])) {
+        $message = $_POST['message'];
+        addMessageToChatbot($message);
     }
-    addMessageToChatbot("Hola chatbot!");
-    addMessageToChatbot("¿Cómo estás?");
-    addMessageToChatbot("Dime el clima.");
-    addMessageToChatbot("Gracias");
-    addMessageToChatbot("Gracias");
     ?>
     <div class="chat-container">
+        <div class="chat-header">
+            <h2>Plática con Liz!</h2>
+        </div>
+        <form action="test.php" method="post">
+            <input type="text" id="message" method="post" name="message" placeholder="Escribele una duda a Liz!" require>
+            <input type="submit" value="Enviar" class="btn btn-success">
+        </form>
         <?php foreach ($responses as $conversation) : ?>
             <div class="message">
                 <span class="user">Usuario:</span>
