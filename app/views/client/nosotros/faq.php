@@ -9,84 +9,71 @@
 </head>
 
 <body>
-    <?php include 'navBar.php';?>
+    <?php include 'navBar.php'; ?>
     <main>
         <section id="quienes-somos">
             <h1>¿Quiénes Somos?</h1>
 
             <section id="nosotros">
                 <h2>Nosotros</h2>
-                <p>En "Nosotros" encontrarás información sobre nuestra historia, misión, visión y valores. Conoce al
-                    equipo detrás de la marca y cómo trabajamos para ofrecerte los mejores productos y servicios.</p>
+                <div class="container mt-3">
+                    <p>PSU Gang es un término utilizado para describir un grupo de entusiastas de la tecnología y expertos en fuentes de poder (PSU, por sus siglas en inglés) que comparten conocimientos, opiniones y experiencias sobre fuentes de poder de alta calidad.</p>
+
+                    <p>El PSU Gang se caracteriza por:</p>
+
+                    <ol>
+                        <li><strong>Enfoque en la calidad y la precisión:</strong> Buscan fuentes de poder con alta eficiencia, estabilidad y confiabilidad.</li>
+                        <li><strong>Análisis detallado:</strong> Realizan pruebas y análisis exhaustivos de las fuentes de poder para evaluar su rendimiento y características.</li>
+                        <li><strong>Compartir conocimientos:</strong> Comparten sus hallazgos y opiniones en foros, redes sociales y otros canales para ayudar a otros a elegir fuentes de poder adecuadas.</li>
+                        <li><strong>Énfasis en la seguridad:</strong> Destacan la importancia de las protecciones y características de seguridad en las fuentes de poder.</li>
+                        <li><strong>Críticas constructivas:</strong> Ofrecen críticas y sugerencias para mejorar las fuentes de poder y promover la innovación en la industria.</li>
+                    </ol>
+
+                    <p>El PSU Gang ha ganado reconocimiento en la comunidad de tecnología por su enfoque en la calidad y la precisión, y su compromiso con la educación y la orientación en el ámbito de las fuentes de poder.</p>
+                </div>
+
             </section>
 
             <section id="faq">
                 <h2>FAQ (Preguntas Frecuentes)</h2>
+
                 <div class="faq-item">
-                    <button class="faq-question">¿Qué tipos de productos ofrecemos?</button>
+                    <button class="faq-question">¿Qué es el PSU Gang?</button>
                     <div class="faq-answer">
-                        <p>Ofrecemos una amplia gama de productos tecnológicos incluyendo hardware, software y
-                            accesorios.</p>
+                        <p>El PSU Gang es una comunidad de entusiastas de la tecnología especializados en fuentes de poder. Nos enfocamos en compartir conocimientos y opiniones sobre productos de alta calidad en el ámbito de las PSU.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
-                    <button class="faq-question">¿Cómo puedo realizar una compra?</button>
+                    <button class="faq-question">¿Por qué es importante la calidad de las fuentes de poder?</button>
                     <div class="faq-answer">
-                        <p>Puedes realizar una compra a través de nuestro sitio web añadiendo productos al carrito y
-                            completando el proceso de pago.</p>
+                        <p>La calidad de las fuentes de poder es crucial para la estabilidad y seguridad de los componentes del sistema. Fuentes de poder de alta calidad garantizan eficiencia, protecciones adecuadas y una mayor vida útil de los dispositivos.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
-                    <button class="faq-question">¿Qué métodos de pago aceptan?</button>
+                    <button class="faq-question">¿Cómo puedo unirme a la comunidad PSU Gang?</button>
                     <div class="faq-answer">
-                        <p>Aceptamos varios métodos de pago incluyendo tarjetas de crédito, débito, PayPal y
-                            transferencias bancarias.</p>
+                        <p>Puedes unirte a nuestra comunidad a través de nuestras plataformas en línea, donde compartimos análisis, reseñas y noticias sobre fuentes de poder y otros componentes de hardware.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
-                    <button class="faq-question">¿Cómo puedo rastrear mi pedido?</button>
+                    <button class="faq-question">¿Ofrecen recomendaciones personalizadas para fuentes de poder?</button>
                     <div class="faq-answer">
-                        <p>Puedes rastrear tu pedido utilizando el número de seguimiento proporcionado en el correo de
-                            confirmación de envío.</p>
+                        <p>Sí, ofrecemos recomendaciones basadas en las necesidades específicas de tu sistema y tus preferencias. Puedes contactarnos a través de nuestras redes sociales o foros para más información.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
-                    <button class="faq-question">¿Cuál es su política de devoluciones?</button>
+                    <button class="faq-question">¿Cuál es la diferencia entre una PSU de alta calidad y una de baja calidad?</button>
                     <div class="faq-answer">
-                        <p>Nuestra política de devoluciones permite devoluciones dentro de los 30 días posteriores a la
-                            compra bajo ciertas condiciones.</p>
+                        <p>Las PSUs de alta calidad generalmente tienen mayor eficiencia energética, mejor construcción, más protecciones de seguridad y una mayor estabilidad de voltaje. Las de baja calidad pueden comprometer el rendimiento y la seguridad del sistema.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="colaboraciones">
-                <h2>Consultar Colaboraciones</h2>
-                <div class="colaboracion-item">
-                    <button class="colaboracion-question">Oportunidades de colaboración actuales</button>
-                    <div class="colaboracion-answer">
-                        <p>Actualmente, estamos buscando colaboraciones con influencers en tecnología, proveedores de
-                            hardware innovador y empresas que deseen participar en proyectos conjuntos de investigación
-                            y desarrollo.</p>
-                    </div>
-                </div>
-                <div class="colaboracion-item">
-                    <button class="colaboracion-question">Requisitos para colaborar con nosotros</button>
-                    <div class="colaboracion-answer">
-                        <p>Para colaborar con nosotros, debes tener una presencia establecida en el sector tecnológico,
-                            un historial comprobado de colaboraciones exitosas y un compromiso con la innovación y la
-                            calidad.</p>
-                    </div>
-                </div>
-                <div class="colaboracion-item">
-                    <button class="colaboracion-question">Formulario de contacto para propuestas de
-                        colaboración</button>
-                    <div class="colaboracion-answer">
-                        <p>Para enviar tu propuesta de colaboración, por favor rellena nuestro formulario de contacto en
-                            la sección de colaboraciones de nuestro sitio web. Asegúrate de incluir todos los detalles
-                            relevantes y cualquier información adicional que creas que pueda ser útil.</p>
-                    </div>
-                </div>
-            </section>
+
         </section>
     </main>
 
