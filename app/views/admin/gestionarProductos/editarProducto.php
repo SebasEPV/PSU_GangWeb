@@ -1,5 +1,11 @@
 <?php
 require("./../../../../config/database.php");
+session_start();
+
+if (!isset($_SESSION['email'])) {
+  header('Location: ./../../auth/login.php?err=6');
+  exit;
+}
 
 $con = new Database;
 $enlace = $con->getConnection();

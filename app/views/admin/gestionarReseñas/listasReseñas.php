@@ -1,5 +1,11 @@
 <?php
 require("./../../../../config/database.php");
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header('Location: ./../../auth/login.php?err=6');
+    exit;
+}
 
 $con = new Database;
 $enlace = $con->getConnection();
@@ -191,14 +197,18 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarPerfil/verPerfil.php">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./../gestionarProductos/listasProducto.php">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Reseñas</a></li>
-                    <a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../auth/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <section class="content-header">
         <div class="container-fluid">

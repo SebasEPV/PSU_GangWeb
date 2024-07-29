@@ -31,6 +31,7 @@ if ($query->execute()) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,26 +79,22 @@ if ($query->execute()) {
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DDDCDB;">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reseñas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Comentarios</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarPerfil/verPerfil.php">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarProductos/listasProducto.php">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../auth/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -125,4 +122,5 @@ if ($query->execute()) {
         </div>
     </div>
 </body>
+
 </html>

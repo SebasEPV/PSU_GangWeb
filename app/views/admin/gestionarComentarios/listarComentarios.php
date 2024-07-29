@@ -154,25 +154,20 @@ if (isset($_GET['delete'])) {
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DDDCDB;">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../gestionarProductos/listasProductos.php">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Comentarios</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./../gestionarPerfil/verPerfil.php">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./../gestionarProductos/listasProducto.php">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./../gestionarReseñas/listasReseñas.php">Reseñas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../auth/logout.php">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -215,7 +210,7 @@ if (isset($_GET['delete'])) {
                                             <td><?php echo htmlspecialchars($comment['review_title']); ?></td>
                                             <td><?php echo htmlspecialchars($comment['product_name']); ?></td>
                                             <td>
-                                            <a href="#" onclick="confirmDeletion(<?php echo $comment['comments_id']; ?>); return false;" class="btn btn-custom-danger">Eliminar</a>
+                                                <a href="#" onclick="confirmDeletion(<?php echo $comment['comments_id']; ?>); return false;" class="btn btn-custom-danger">Eliminar</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
