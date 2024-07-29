@@ -48,9 +48,9 @@
               <li class="has-children">
                 <a href="#blog-section" class="nav-link">Soporte técnico</a>
                 <ul class="dropdown">
-                  <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
-                  <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
-                  <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
+                  <li><a href="locations.php">Ubicaciones</a></li>
+                  <li><a href="chatbotLiz.php">Platica con Liz</a></li>
+                  <li><a href="wattageCalculator.php">Calculadora de wattage</a></li>
                 </ul>
               </li>
 

@@ -9,7 +9,7 @@ if (!$enlace) {
 }
 
 // Obtener marcas
-$queryLocatiosn = $enlace->query("SELECT brand_id, brand_name FROM brands");
+$queryLocatiosn = $enlace->query("SELECT location, email, phoneNumber FROM locations");
 $locations = $queryLocatiosn->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -44,6 +44,7 @@ $locations = $queryLocatiosn->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
+    <?php include 'navBar.php'?>
     <h1>Ubica nuestras casas de soporte tecnico</h1>
     <table class="table">
             <tr>
