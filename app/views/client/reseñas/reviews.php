@@ -1,7 +1,6 @@
 <?php
 require './../../../../config/config.php';
 
-
 // Consultas para obtener datos de filtros
 $brands = $enlace->query("SELECT * FROM brands")->fetchAll(PDO::FETCH_ASSOC);
 $categories = $enlace->query("SELECT * FROM categories")->fetchAll(PDO::FETCH_ASSOC);
@@ -159,19 +158,12 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
             margin-right: 8px;
         }
     </style>
-    <script>
-        function toggleContent(id) {
-            var content = document.getElementById('content-' + id);
-            if (content.style.display === 'none') {
-                content.style.display = 'table-row';
-            } else {
-                content.style.display = 'none';
-            }
-        }
-    </script>
 </head>
+
 <body>
 <?php include 'navBar.php'; ?>
+<?php include './../refs.html'; ?>
+
     <section class="content-header">
         <div class="container-fluid">
             <h1>Reseñas</h1>
@@ -224,23 +216,18 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <tbody>
                         <?php if (!empty($reviews)) : ?>
                             <?php foreach ($reviews as $row) : ?>
-                                <tr onclick="toggleContent(<?php echo $row['review_id']; ?>)">
+                                <tr>
                                     <td><?php echo htmlspecialchars($row['review_id']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['title']); ?></td>
+                                    <td><a href="reviewDetail.php?review_id=<?php echo htmlspecialchars($row['review_id']); ?>"><?php echo htmlspecialchars($row['title']); ?></a></td>
                                     <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                                     <td><?php echo htmlspecialchars($row['username']); ?></td>
                                     <td><?php echo htmlspecialchars($row['tier_name']); ?></td>
                                     <td><?php echo htmlspecialchars($row['date_review']); ?></td>
                                 </tr>
-                                <tr id="content-<?php echo $row['review_id']; ?>" class="expand-content">
-                                    <td colspan="7">
-                                        <div><?php echo htmlspecialchars($row['content']); ?></div>
-                                    </td>
-                                </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="7">No hay reseñas disponibles.</td>
+                                <td colspan="6">No hay reseñas disponibles.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

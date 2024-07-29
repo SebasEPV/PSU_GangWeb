@@ -13,16 +13,15 @@
         <nav>
             <ul>
                 <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
-                <li><a href="faq.php">Nosotros</a>
-
+                <li><a href="./../nosotros/faq.php">Nosotros</a>
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
                 <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
                 <li class="has-children">
                     <a class="nav-link">Soporte técnico</a>
                     <ul class="dropdown">
-                        <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
-                        <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
-                        <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
+                        <li><a href="locations.php">Ubicaciones</a></li>
+                        <li><a href="chatbotLiz.php">Platica con Liz</a></li>
+                        <li><a href="wattageCalculator.php">Calculadora de wattage</a></li>
                     </ul>
                 </li>
                 <li><a href="./../../auth/login.php" class="registro">Regístrate</a></li>

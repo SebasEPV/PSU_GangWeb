@@ -21,10 +21,23 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
             max-width: 100%;
-            padding: 300px;
-            align-items: center;
-            margin-top: 40px;
-            margin-left: 400px;
+            padding: 30px;
+            margin: 40px auto;
+        }
+
+        .chat-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .chat-header h2 {
+            margin: 0;
+        }
+
+        .chat-body {
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
         }
 
         .message {
@@ -45,14 +58,36 @@
             margin-left: 10px;
             display: inline-block;
         }
+
+        .chat-input {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .chat-input input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
-    <?php
-    include 'navBar.php';
-    ?>
+
+    <?php include './../../layouts/navBar.php'; ?>
+    <?php include './../refs.html'; ?>
 
     <?php
     function sendMessageToChatbot($message)
