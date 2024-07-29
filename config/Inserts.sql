@@ -5,10 +5,12 @@ VALUES	('Sebas_EPV', 'Sebastian', 'Perez', '12345', 'sebas@gmail.com', True),
 		('Carlos_GM', 'Carlos', 'Gonzales', '12345', 'carlos@gmail.com', True),
 		('Bryan_NC', 'Bryan', 'Navarrete', '12345', 'bryan@gmail.com', True),
         ('Nahui_PP', 'Nahui', 'Perez', '12345', 'nahui@gmail.com', True);
-
+        
+        
 INSERT INTO users(username, first_name, last_name, pass, email, permissions)
 	VALUES('clientTest', 'client', 'test', '12345', 'client@gmail.com', false);
-        
+
+
 INSERT INTO tiers (tier_name, tier_description) VALUES ('A', 'Productos de gama alta con excelente rendimiento');
 INSERT INTO tiers (tier_name, tier_description) VALUES ('B', 'Productos de alta calidad con grandes características');
 INSERT INTO tiers (tier_name, tier_description) VALUES ('C', 'Productos buenos con rendimiento decente');
@@ -120,8 +122,29 @@ INSERT INTO locations (location, email, phoneNumber)
     ('León', 'diegoTorres@example.com', '+52 4776543210');
 
 
+INSERT INTO psuList (psuName, wattage) VALUES
+('Corsair RM750x', 750),
+('EVGA SuperNOVA 650 G5', 650),
+('Seasonic Focus GX-850', 850),
+('Thermaltake Toughpower GF1 1000W', 1000);
 
+INSERT INTO cpuList (cpuName, wattage) VALUES
+('Intel Core i9-12900K', 125),
+('AMD Ryzen 9 5900X', 105),
+('Intel Core i7-12700K', 125),
+('AMD Ryzen 5 5600X', 65);
 
+INSERT INTO gpuList (gpuName, wattage) VALUES
+('NVIDIA GeForce RTX 3080', 320),
+('AMD Radeon RX 6800 XT', 300),
+('NVIDIA GeForce RTX 3070', 220),
+('AMD Radeon RX 6700 XT', 230);
+
+INSERT INTO mobosList (moboName, wattage) VALUES
+('ASUS ROG Strix Z590-E', 30),
+('MSI MAG B550 TOMAHAWK', 30),
+('Gigabyte AORUS X570 Elite', 40),
+('ASRock B450 Steel Legend', 30);
 
 -- Continúa con más reseñas para otros productos.
 
@@ -136,6 +159,7 @@ INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (8, 10); -
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (9, 1); -- Western Digital Blue 1TB en categoría SSD
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (10, 2); -- G.Skill Trident Z RGB 32GB en categoría RAM
 INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (11, 6); -- cx450
+
 
 INSERT INTO comments (content, fk_user_id, fk_review_id) VALUES
 ('¡Totalmente de acuerdo! Este SSD es realmente impresionante.', 1, 1),
@@ -181,3 +205,5 @@ INSERT INTO comments (content, fk_user_id, fk_review_id) VALUES
 ('Un buen disco duro con mucho espacio y rendimiento aceptable.', 4, 8),
 ('Un buen SSD para usuarios generales, sin sorpresas.', 1, 9),
 ('Rendimiento y estética en un solo paquete.', 2, 10);
+
+

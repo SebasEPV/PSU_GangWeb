@@ -85,6 +85,32 @@ CREATE TABLE locations (
     phoneNumber VARCHAR(50)
 );
 
+CREATE TABLE psuList(
+	psu_id INT PRIMARY KEY auto_increment,
+    psuName VARCHAR(30),
+    wattage INT
+
+);
+
+CREATE TABLE cpuList(
+	cpu_id INT PRIMARY KEY auto_increment,
+    cpuName VARCHAR(30),
+    wattage INT
+    
+);
+
+CREATE TABLE gpuList(
+	gpu_id INT PRIMARY KEY auto_increment,
+    gpuName VARCHAR(30),
+    wattage INT
+);
+
+CREATE TABLE mobosList (
+	mobo_id INT PRIMARY KEY auto_increment,
+    moboName VARCHAR(30),
+    wattage INT
+);
+
 CREATE VIEW consultReviews AS
 SELECT review_id, product_name, username, tier_name, date_review, title, content
 FROM products p INNER JOIN reviews r
