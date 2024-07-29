@@ -13,7 +13,7 @@
         <nav>
             <ul>
                 <li><a href="./../../layouts/mainClient.php">Inicio</a></li>
-                <li><a href="faq.php">Nosotros</a>
+                <li><a href="./../nosotros/faq.php">Nosotros</a>
 
                 <li><a href="./../reseñas/reviews.php">Reseñas</a></li>
                 <li><a href="./../gestionarComentarios/commentsSection.php">Comentarios</a></li>
