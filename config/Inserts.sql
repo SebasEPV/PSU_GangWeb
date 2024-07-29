@@ -113,3 +113,48 @@ INSERT INTO product_categories (fk_product_id, fk_category_id) VALUES (10, 2); -
 
 -- Continúa asignando productos a sus categorías correspondientes.
 
+-- Asegúrate de que estos IDs coincidan con los IDs existentes en la tabla 'reviews'
+INSERT INTO comments (content, fk_user_id, fk_review_id) VALUES
+('¡Totalmente de acuerdo! Este SSD es realmente impresionante.', 1, 7),
+('Para el precio, no se puede pedir más. Muy buen SSD.', 2, 8),
+('Sin duda, una de las mejores RAMs que he usado para gaming.', 3, 9),
+('Me ha mejorado mi precisión en los juegos, excelente.', 4, 10),
+('La placa base es robusta y estable, excelente para mi configuración.', 1, 11),
+('La calidad gráfica es sobresaliente, incluso en los juegos más exigentes.', 2, 12),
+('El teclado es muy cómodo para largas sesiones de escritura.', 3, 13),
+('Gran capacidad para almacenar todos mis archivos importantes.', 4, 14),
+('El rendimiento es más que suficiente para mis necesidades diarias.', 1, 15),
+('El diseño RGB hace que mi PC se vea increíble y el rendimiento es top.', 2, 7),
+
+('La velocidad del SSD me ha sorprendido gratamente.', 1, 8),
+('Buen rendimiento, pero no es el mejor en términos de durabilidad.', 2, 9),
+('Una gran opción para quienes necesitan RAM rápida para juegos.', 3, 10),
+('Excelente precisión para juegos FPS, muy recomendable.', 4, 11),
+('Buena opción para un sistema de gama alta.', 1, 12),
+('Una tarjeta gráfica muy poderosa, vale cada centavo.', 2, 13),
+('El teclado tiene una respuesta táctil que mejora mi experiencia de escritura.', 3, 14),
+('Perfecto para almacenar juegos y aplicaciones sin preocupaciones.', 4, 15),
+('Ideal para usuarios que buscan una buena relación calidad-precio.', 1, 7),
+('Un componente estético que también ofrece un rendimiento excelente.', 2, 8),
+
+('Estoy muy satisfecho con la velocidad de este producto.', 1, 9),
+('Un SSD de buena relación calidad-precio para un uso general.', 2, 10),
+('Rendimiento sólido, aunque podría ser un poco más rápido.', 3, 11),
+('La precisión del ratón mejora mi desempeño en juegos.', 4, 12),
+('Excelente placa base con muchas características útiles.', 1, 13),
+('Los gráficos son simplemente impresionantes, ideal para juegos modernos.', 2, 14),
+('El teclado tiene una respuesta que me encanta, ideal para gaming.', 3, 15),
+('El espacio de almacenamiento es perfecto para mi setup.', 4, 7),
+('Una opción sólida para quienes no necesitan la máxima velocidad.', 1, 8),
+('Una memoria RAM que combina estética y gran rendimiento.', 2, 9),
+
+('Muy buen rendimiento en tareas intensivas.', 1, 10),
+('No es el mejor en su clase, pero cumple con lo prometido.', 2, 11),
+('Perfecta para un sistema que requiere mucho multitasking.', 3, 12),
+('Recomiendo esta opción para jugadores serios.', 4, 13),
+('La placa base cumple bien su función, aunque podría tener más puertos.', 1, 14),
+('Excelente para juegos en alta resolución.', 2, 15),
+('Teclado robusto con buen feedback táctil.', 3, 7),
+('Un buen disco duro con mucho espacio y rendimiento aceptable.', 4, 8),
+('Un buen SSD para usuarios generales, sin sorpresas.', 1, 9),
+('Rendimiento y estética en un solo paquete.', 2, 10);

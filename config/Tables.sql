@@ -60,6 +60,15 @@ CREATE TABLE product_categories(
     CONSTRAINT fk_category_id_product_categories FOREIGN KEY (fk_category_id) REFERENCES categories(category_id)
 );
 
+CREATE TABLE comments (
+	comments_id INT PRIMARY KEY AUTO_INCREMENT,
+    content TEXT,
+    fk_user_id INT,
+	CONSTRAINT fk_user_id_comments FOREIGN KEY (fk_user_id) REFERENCES users(user_id),
+    fk_review_id INT,
+	CONSTRAINT fk_review_id_comments FOREIGN KEY (fk_review_id) REFERENCES reviews(review_id)
+);
+
 CREATE TABLE restablecerContraseña(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(30) NOT NULL,
