@@ -9,25 +9,7 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#quienes-somos">¿Quiénes Somos?</a>
-                    <ul>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#colaboraciones">Consultar Colaboraciones</a></li>
-                    </ul>
-                </li>
-                <li><a href="#resenas">Reseñas</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#servicios">Servicios Adicionales</a></li>
-                <li><a href="#registrate" class="registro">Regístrate</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <?php include 'navBar.php';?>
     <main>
         <section id="quienes-somos">
             <h1>¿Quiénes Somos?</h1>

@@ -13,10 +13,6 @@
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
         .chat-container {
@@ -25,7 +21,10 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
             max-width: 100%;
-            padding: 20px;
+            padding: 300px;
+            align-items: center;
+            margin-top: 40px;
+            margin-left: 400px;
         }
 
         .message {
@@ -54,7 +53,7 @@
     <?php
     include 'navBar.php';
     ?>
-    <h1></h1>
+
     <?php
     function sendMessageToChatbot($message)
     {
