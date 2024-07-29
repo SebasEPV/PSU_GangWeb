@@ -1,3 +1,45 @@
+<?php
+include 'navBar.php';
+include './../refs.html';
+// session_start(); // Iniciar sesión para almacenar el historial de la conversación
+
+function sendMessageToChatbot($message) {
+    $url = 'http://localhost:5000/chatbot';
+    $data = array('message' => $message);
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $response_data = json_decode($response, true);
+    return $response_data;
+}
+
+if (!isset($_SESSION['responses'])) {
+    $_SESSION['responses'] = array();
+}
+
+function addMessageToChatbot($message) {
+    $response = sendMessageToChatbot($message);
+
+    if (!empty($response) && isset($response['response']) && is_string($response['response'])) {
+        $_SESSION['responses'][] = array('user' => $message, 'bot' => $response['response']);
+    } else {
+        $_SESSION['responses'][] = array('user' => $message, 'bot' => 'No se recibió una respuesta válida del chatbot.');
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message'])) {
+    $message = $_POST['message'];
+    addMessageToChatbot($message);
+}
+
+$responses = $_SESSION['responses'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,63 +128,13 @@
 <body>
 
 
-    <?php include 'navBar.php'; ?>
-    <?php include './../refs.html'; ?>
 
-    <?php
-    function sendMessageToChatbot($message)
-    {
-        $url = 'http://localhost:5000/chatbot';
-        $data = array('message' => $message);
-
-        // Iniciar cURL
-        $ch = curl_init($url);
-
-        // Configurar cURL
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-
-        // Ejecutar cURL
-        $response = curl_exec($ch);
-
-        // Cerrar cURL
-        curl_close($ch);
-
-        // Decodificar la respuesta
-        $response_data = json_decode($response, true);
-
-        return $response_data;
-    }
-
-    $responses = array();
-
-    function addMessageToChatbot($message)
-    {
-        global $responses;
-        $response = sendMessageToChatbot($message);
-
-        if (!empty($response) && isset($response['response']) && is_string($response['response'])) {
-            $responses[] = array('user' => $message, 'bot' => $response['response']);
-        } else {
-            $responses[] = array('user' => $message, 'bot' => 'No se recibió una respuesta válida del chatbot.');
-        }
-    }
-
-
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message'])) {
-        $message = $_POST['message'];
-        addMessageToChatbot($message);
-    }
-    ?>
     <div class="chat-container">
         <div class="chat-header">
             <h2>Plática con Liz!</h2>
         </div>
         <form action="chatbotLiz.php" method="post">
-            <input type="text" id="message" method="post" name="message" placeholder="Escribele una duda a Liz!" require>
+            <input type="text" id="message" method="post" name="message" placeholder="Escribele una duda a Liz!" required>
             <input type="submit" value="Enviar" class="btn btn-success">
         </form>
         <?php foreach ($responses as $conversation) : ?>
