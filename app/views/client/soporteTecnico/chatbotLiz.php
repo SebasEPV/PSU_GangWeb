@@ -52,6 +52,7 @@
 <body>
 
     <?php
+    include 'navBar.php';
     function sendMessageToChatbot($message)
     {
         $url = 'http://localhost:5000/chatbot';

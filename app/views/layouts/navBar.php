@@ -36,7 +36,7 @@
           <nav class="site-navigation position-relative text-right" role="navigation">
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
               <li class="has-children">
-                <a href="#about-section" class="nav-link">Nosotros</a>
+                <a class="nav-link">Nosotros</a>
                 <ul class="dropdown">
                   <li><a href="./../client/nosotros/faq.php" class="nav-link">FAQ</a></li>
                   <li><a href="./../client/nosotros/ourTeam.php" class="nav-link">Nuestro equipo</a></li>

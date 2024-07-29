@@ -31,7 +31,7 @@
 
 
         <div class="col-6 col-xl-2">
-          <a href="mainClient.php"><img class="mb-0 logo" src="./../../../../public/assets/img/logo/capacitores/png/capacitor5.png" alt="capacitor"></img></a>
+          <a href="./../../../layouts/mai.php"><img class="mb-0 logo" src="./../../../../public/assets/img/logo/capacitores/png/capacitor5.png" alt="capacitor"></img></a>
         </div>
 
 
@@ -46,13 +46,14 @@
                   <li><a href="#faq-section" class="nav-link">Colaboraciones</a></li>
                 </ul>
               </li>
-                <li><a href="reviews.php" class="nav-link">Reseñas</a></li>
+              <li><a href="reviews.php" class="nav-link">Reseñas</a></li>
+              <li><a href="./../gestionarComentarios/commentsSection.php" class="nav-link">Comentarios</a></li>
               <li class="has-children">
                 <a href="#blog-section" class="nav-link">Soporte técnico</a>
                 <ul class="dropdown">
-                  <li><a href="./../client/soporteTecnico/locations.php">Ubicaciones</a></li>
-                  <li><a href="./../client/soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
-                  <li><a href="./../client/soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
+                  <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
+                  <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
+                  <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
                 </ul>
               </li>
 

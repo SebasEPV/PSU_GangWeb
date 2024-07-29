@@ -168,12 +168,6 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 content.style.display = 'none';
             }
         }
-
-        function confirmDeletion(url) {
-            if (confirm("¿Estás seguro de que deseas eliminar esta reseña?")) {
-                window.location.href = url;
-            }
-        }
     </script>
 </head>
 <body>
@@ -225,7 +219,6 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                             <th style="width: 15%">Autor</th>
                             <th>Calificación</th>
                             <th style="width: 15%" class="text-center">Fecha</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -238,10 +231,6 @@ $reviews = $consulta->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo htmlspecialchars($row['username']); ?></td>
                                     <td><?php echo htmlspecialchars($row['tier_name']); ?></td>
                                     <td><?php echo htmlspecialchars($row['date_review']); ?></td>
-                                    <td>
-                                        <a href="editarReseña.php?id=<?php echo $row['review_id']; ?>" class="btn btn-custom-edit">Editar</a>
-                                        <a href="#" onclick="confirmDeletion('./../../../controllers/eliminarReseñas.php?id=<?php echo $row['review_id']; ?>'); return false;" class="btn btn-custom-danger">Eliminar reseña</a>
-                                    </td>
                                 </tr>
                                 <tr id="content-<?php echo $row['review_id']; ?>" class="expand-content">
                                     <td colspan="7">

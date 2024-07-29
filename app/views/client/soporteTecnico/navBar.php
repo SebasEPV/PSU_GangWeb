@@ -49,7 +49,6 @@
                 <a href="#blog-section" class="nav-link">Soporte técnico</a>
                 <ul class="dropdown">
                   <li><a href="./../soporteTecnico/locations.php">Ubicaciones</a></li>
-                  <li><a href="./../soporteTecnico/conditionService.php">Condiciones de Servicios</a></li>
                   <li><a href="./../soporteTecnico/chatbotLiz.php">Platica con Liz</a></li>
                   <li><a href="./../soporteTecnico/wattageCalculator.php">Calculadora de wattage</a></li>
                 </ul>
