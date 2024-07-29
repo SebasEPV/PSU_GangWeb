@@ -87,7 +87,7 @@ CREATE TABLE locations (
 
 CREATE TABLE psuList(
 	psu_id INT PRIMARY KEY auto_increment,
-    psuName VARCHAR(30),
+    psuName VARCHAR(100),
     wattage INT
 
 );
@@ -110,6 +110,8 @@ CREATE TABLE mobosList (
     moboName VARCHAR(30),
     wattage INT
 );
+
+drop table psuList;
 
 CREATE VIEW consultReviews AS
 SELECT review_id, product_name, username, tier_name, date_review, title, content
