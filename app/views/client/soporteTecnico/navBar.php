@@ -30,7 +30,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-6 col-xl-2">
-          <a href="mainClient.php"><img class="mb-0 logo" src="./../../../../public/assets/img/logo/capacitores/png/capacitor5.png" alt="capacitor"></img></a>
+          <a href="./../../layouts/mainClient.php"><img class="mb-0 logo" src="./../../../../public/assets/img/logo/capacitores/png/capacitor5.png" alt="capacitor"></img></a>
         </div>
         <div class="col-12 col-md-10 d-none d-xl-block">
           <nav class="site-navigation position-relative text-right" role="navigation">
