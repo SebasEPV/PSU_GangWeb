@@ -109,6 +109,9 @@ if ($query->execute()) {
         </div>
         <div class="text-center">
             <a href="./editarPerfil.php" class="btn btn-primary mt-3">Editar Información</a>
+            <?php if ($user['permissions']): ?>
+                <a href="./../../admin/gestionarReseñas/listasReseñas.php" class="btn btn-primary mt-3">Vista de Administrador</a>
+            <?php endif; ?>
         </div>
     </div>
 </body>

@@ -2,9 +2,10 @@
 session_start();
 
 if (!isset($_SESSION['email'])) {
-  header('Location: ./../../auth/login.php?err=6');
-  exit;
+    header('Location: ./../../auth/login.php?err=6');
+    exit;
 }
+
 require("./../../../../config/database.php");
 
 $con = new Database;
@@ -12,11 +13,6 @@ $enlace = $con->getConnection();
 
 if (!$enlace) {
     throw new Exception("Error al establecer la conexión a la base de datos.");
-}
-
-if (!isset($_SESSION['email'])) {
-    header('Location: ./../views/auth/login.php');
-    exit;
 }
 
 $email = $_SESSION['email'];
@@ -82,6 +78,16 @@ if ($query->execute()) {
         .navbar-nav .nav-link:hover {
             color: #00E9D2;
         }
+
+        .btn-custom-client {
+            background-color: #007bff; /* Azul para el botón */
+            color: white;
+            border: none;
+        }
+        
+        .btn-custom-client:hover {
+            background-color: #0056b3; /* Azul oscuro para hover */
+        }
     </style>
 </head>
 
@@ -99,7 +105,7 @@ if ($query->execute()) {
                     <li class="nav-item"><a class="nav-link" href="./../gestionarComentarios/listarComentarios.php">Comentarios</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../../../controllers/logout.php">Cerrar Sesión</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-custom-danger" href="./../../../controllers/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -124,6 +130,10 @@ if ($query->execute()) {
         </div>
         <div class="text-center">
             <a href="./editarPerfil.php" class="btn btn-primary mt-3">Editar Información</a>
+            <!-- Mostrar botón solo si el usuario es administrador -->
+            <?php if ($user['permissions']): ?>
+                <a href="./../../layouts/mainClient.php" class="btn btn-primary mt-3">Vista de Cliente</a>
+            <?php endif; ?>
         </div>
     </div>
 </body>
